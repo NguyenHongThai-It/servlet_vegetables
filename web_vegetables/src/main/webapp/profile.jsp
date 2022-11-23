@@ -160,7 +160,7 @@
     <!-- Footer -->
     <jsp:include page="include/common/footer.jsp"></jsp:include>
 
-    <div dangerouslySetInnerHTML="{{__html:'<p> ấdd</p>''}}"></div>
+    <div dangerouslySetInnerHTML="{{__html:'<h1> asdadadasdasdsad</h1>'}}"></div>
 </div>
 </body>
 

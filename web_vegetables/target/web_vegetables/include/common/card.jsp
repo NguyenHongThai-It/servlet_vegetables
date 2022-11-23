@@ -7,6 +7,15 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    String name = request.getParameter("name") != null ? request.getParameter("name").toString() : "";
+    String img = request.getParameter("img") != null ? request.getParameter("img") : "";
+    String disc_extra = request.getParameter("disc_extra") != null ? request.getParameter("disc_extra") : "";
+    String price = request.getParameter("price") != null ? request.getParameter("price") : "";
+    String price_disc = request.getParameter("price_disc") != null ? request.getParameter("price_disc") : "";
+
+%>
 <div class="card mt-4" style="background: var(--light_1)">
     <div
             class="item__img--hover d-flex align-items-center justify-content-center"
@@ -19,20 +28,22 @@
     </div>
     <div class="card-body">
         <h5 class="item__tittle--hover card-title mb-4 fs-4">
-            <b>NẤM LINH CHI NÚI ĐÁ VÀNG HÀN QUỐC</b>
+            <b><%=name%>
+            </b>
         </h5>
         <div class="card-text pt-2">
             <div
                     class="item_sellPrice ps-3 text-red_1 fw-bold d-flex align-items-end lh-1 justify-content-around"
             >
-                <p class="me-3" style="font-size: 3.8rem">-8%</p>
+                <p class="me-3" style="font-size: 3.8rem">-<%=disc_extra%>%</p>
                 <div class="text-start">
                             <span
                                     class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
                             >
-                              2.500.000 đ</span
+                              <%=price%>> đ</span
                             >
-                    <p class="media-fontsize-lg lh-1">2.300.000 đ</p>
+                    <p class="media-fontsize-lg lh-1"><%=price_disc%>
+                    </p>
                 </div>
             </div>
         </div>

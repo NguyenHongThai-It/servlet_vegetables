@@ -4,11 +4,13 @@ public class Nav {
     private String id;
     private String name;
     private int img;
+    private String slug;
 
-    public Nav(String id, String name, int img) {
+    public Nav(String id, String name, int img, String slug) {
         this.id = id;
         this.name = name;
         this.img = img;
+        this.slug = slug;
     }
 
     public String getId() {
@@ -33,6 +35,14 @@ public class Nav {
 
     public void setImg(int img) {
         this.img = img;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 
     @Override

@@ -1,12 +1,20 @@
+<%@ page import="Entities.Nav" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Entities.User" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%
+    List<Nav> list = request.getAttribute("listNavs") != null ? (List<Nav>) request.getAttribute("listNavs") : new ArrayList<Nav>();
+    User user = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User();
+%>
 <section class="container header" id="header">
     <div
             class="header-wrap d-flex align-items-md-start align-items-center justify-content-md-between justify-content-center flex-column flex-lg-row"
     >
         <div class="header-left">
-            <a href="<%= request.getContextPath()%>/index.jsp" class="header-left__link">
+            <a href="<%= request.getContextPath()%>/home" class="header-left__link">
                 <img
                         src="./asset/img/home/logo.jpg"
                         alt=""
@@ -19,47 +27,58 @@
         >
             <div class="header-right-top">
                 <ul class="header-right-list d-none d-md-flex gap-sm-1 p-0">
+                    <% for (int i = 0; i < list.size(); i++) { %>
+
                     <li class="header-right__item">
-                        <a href="<%= request.getContextPath()%>/index.jsp" class="header-right__link fw-normal">
-                            Trang chủ
+                        <a href="<%= request.getContextPath()%><%=list.get(i).getSlug()%>"
+                           class="header-right__link fw-normal">
+                            <%=list.get(i).getName()%>
                         </a>
                     </li>
+
+
+                    <% }
+                    %>
+                    <%
+                        if (user.getUserId() == null) {
+
+                    %>
                     <li class="header-right__item">
-                        <a href="<%= request.getContextPath()%>/about.jsp" class="header-right__link fw-normal">
-                            Giới thiệu
-                        </a>
-                    </li>
-                    <li class="header-right__item">
-                        <a href="<%= request.getContextPath()%>/contact.jsp" class="header-right__link fw-normal">
-                            Liên hệ
-                        </a>
-                    </li>
-                    <li class="header-right__item">
-                        <a
-                                href="<%= request.getContextPath()%>/shopping_guide.jsp"
-                                class="header-right__link fw-normal"
-                        >
-                            Hướng dẫn mua hàng
-                        </a>
-                    </li>
-                    <li class="header-right__item">
-                        <a href="<%= request.getContextPath()%>/policy.jsp" class="header-right__link fw-normal">
-                            Qui định & chính sách chung
-                        </a>
-                    </li>
-                    <li class="header-right__item">
-                        <a href="<%= request.getContextPath()%>/login.jsp" class="header-right__link fw-normal">
+                        <a href="<%= request.getContextPath()%>/login" class="header-right__link fw-normal">
                             Đăng nhập
                         </a>
                     </li>
                     <li class="header-right__item">
                         <a
-                                href="<%= request.getContextPath()%>/register.jsp"
+                                href="<%= request.getContextPath()%>/register"
                                 class="header-right__link fw-normal"
                         >
                             Đăng kí
                         </a>
                     </li>
+                    <%} %>
+
+                    <%
+                        if (user.getUserId() != null) {
+
+
+                    %>
+                    <form action="<%=request.getContextPath()%>/logout " method="post">
+
+                        <li class="header-right__item">
+                            <input type="hidden" name="action" value="logout">
+
+                            <a href="<%= request.getContextPath()%>/home" class="header-right__link fw-normal">
+                                <button type="submit">
+                                    Đăng xuất
+                                </button>
+                            </a>
+                        </li>
+
+                    </form>
+                    <%
+                        }
+                    %>
                 </ul>
             </div>
             <div class="header-right-center d-flex mb-2 mb-md-0">

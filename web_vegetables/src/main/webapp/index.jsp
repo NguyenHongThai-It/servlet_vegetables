@@ -65,8 +65,8 @@
 
 <div class="app">
     <!-- Header -->
-    <c:import url="include/common/header.jsp">
-    </c:import>
+    <c:import url="include/common/header.jsp"></c:import>
+
     <!-- Main -->
     <div
             class="main pb-5"
@@ -74,7 +74,8 @@
     >
         <!-- Slider -->
         <section class="navigate mt-3 mt-md-0" id="navigate">
-            <c:import url="include/common/nav.jsp"></c:import>
+            <c:import url="include/common/nav.jsp">
+            </c:import>
 
 
             <c:import url="include/home/slider.jsp"></c:import>
@@ -84,6 +85,9 @@
             <!-- Service -->
             <section id="payment-method">
                 <div class="row p-4 ps-5 bg-light border rounded-3">
+                    <c:forEach var="service" items="${listService}">
+
+
                     <div class="col-lg-4 col-md-4">
                         <div class="d-flex payment-method-justify">
                             <img
@@ -92,50 +96,15 @@
                                     alt="Tiêu chuẩn Châu Âu"
                             />
                             <div>
-                                <b class="fs-3">Giao hàng toàn quốc</b>
+                                <b class="fs-3">${service.getContent()}</b>
                                 <br/>
                                 <span class="text-secondary fs-4"
-                                >Hà Nội, Hồ Chí Minh trong ngày</span
+                                >${service.getSubContent()}</span
                                 >
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div
-                                class="d-flex payment-method-justify payment-method-margin"
-                        >
-                            <img
-                                    class="me-4 logo-header"
-                                    src="https://kgin.com.vn/wp-content/uploads/2021/09/logo_header_2.jpg"
-                                    alt="Giá rẻ nhất"
-                            />
-                            <div>
-                                <b class="fs-3">Nhận hàng thanh toán</b>
-                                <br/>
-                                <span class="text-secondary fs-4"
-                                >Trực tiếp với người giao</span
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div
-                                class="d-flex payment-method-justify payment-method-margin"
-                        >
-                            <img
-                                    class="me-4 logo-header"
-                                    src="https://kgin.com.vn/wp-content/uploads/2021/09/logo_header_3.jpg"
-                                    alt="Giao hàng toàn quốc"
-                            />
-                            <div>
-                                <b class="fs-3">Miễn phí vận chuyển</b>
-                                <br/>
-                                <span class="text-secondary fs-4"
-                                >Đơn hàng &gt;= 500.000đ</span
-                                >
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </section>
 

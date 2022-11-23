@@ -1,4 +1,6 @@
-<%--
+<%@ page import="Entities.Category" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 11/16/2022
@@ -6,6 +8,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<Category> listCat = request.getAttribute("listHerbal") != null ? (List<Category>) request.getAttribute("listHerbal") : new ArrayList<Category>();
+%>
 <section id="herbal">
     <!-- Thảo Dược -->
     <div class="row mt-5 pt-3">
@@ -26,30 +31,19 @@
                             <span><b class="fs-2">Thảo Dược</b></span>
                         </div>
                     </div>
+                    <%
+                        for (Category cat : listCat) {
+
+
+                    %>
                     <a
-                            href="./product.html"
+                            href="<%=request.getContextPath()%> <%=cat.getSlug()%>"
                             class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                     >
-                        <li>An Cung Ngưu Hoàng</li>
+                        <li><%=cat.getName()%>
+                        </li>
                     </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Tinh Dầu Thông Đỏ</li>
-                    </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Bổ Gan Giải Rượu</li>
-                    </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Sản Phẩm Khác</li>
-                    </a>
+                    <% }%>
 
                     <a href="./product.html" class="category-btn">
                         <div class="category-btn--border">

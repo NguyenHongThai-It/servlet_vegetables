@@ -1,4 +1,6 @@
-<%--
+<%@ page import="Entities.Category" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 11/16/2022
@@ -6,6 +8,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<Category> listCat = request.getAttribute("listCordyceps") != null ? (List<Category>) request.getAttribute("listCordyceps") : new ArrayList<Category>();
+%>
 <section id="cordyceps">
     <!-- Đông Trùng Hạ Thảo -->
     <div class="row mt-5 pt-3">
@@ -30,24 +35,21 @@
                           >
                         </div>
                     </div>
+                    <%
+                        for (Category cat : listCat) {
+
+
+                    %>
                     <a
-                            href="./product.html"
+                            href="<%=request.getContextPath()%> <%=cat.getSlug()%>"
                             class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                     >
-                        <li>Nước Đông Trùng Hạ Thảo</li>
+                        <li><%=cat.getName()%>
+                        </li>
                     </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Viên Đông Trùng Hạ Thảo</li>
-                    </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Cao Đông Trùng Hạ Thảo</li>
-                    </a>
+                    <% }%>
+
+
 
                     <a href="./product.html" class="category-btn">
                         <div class="category-btn--border">

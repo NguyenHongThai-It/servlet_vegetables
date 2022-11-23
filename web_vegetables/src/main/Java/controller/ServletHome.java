@@ -1,7 +1,13 @@
 package controller;
 
-import Entities.User;
-import Model.UserModel;
+import Entities.Category;
+import Entities.Nav;
+import Entities.Service;
+import Model.CategoryModel;
+import Model.NavModel;
+import Model.ProductModel;
+import Model.ServiceModel;
+import utils.Utils;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
@@ -16,18 +22,38 @@ import java.util.List;
 @WebServlet("/home")
 public class ServletHome extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    @Resource(name = "jdbc/project")
-    private DataSource dataSource;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<User> listUsers = new ArrayList<>();
-//        listUsers = new UserModel().listUsers(dataSource);
-        request.setAttribute("listUsers", listUsers);
-        request.setAttribute("page", "contact");
-        request.getRequestDispatcher("/contact.jsp").forward(request, response);
+        Utils util = new Utils();
+        util.passListNav(request);
+        util.passListBestSell(request);
+        getListService(request);
+        getListCatRedGinseng(request, "listRedGinseng", "1");
+        getListCatRedGinseng(request, "listCordyceps", "2");
+        getListCatRedGinseng(request, "listGanoderma", "3");
+        getListCatRedGinseng(request, "listHerbal", "4");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
 
 
     }
 
+    private void getListService(HttpServletRequest request) {
+        List<Service> listService = new ArrayList<>();
+
+        listService = new ServiceModel().getListService();
+        request.setAttribute("listService", listService);
+
+    }
+
+    private void getListCatRedGinseng(HttpServletRequest request, String name, String idParent) {
+        List<Category> listRedGinseng = new ArrayList<Category>();
+
+        listRedGinseng = new CategoryModel().getListCatRedGinseng(idParent);
+        request.setAttribute(name, listRedGinseng);
+
+    }
+
+
 }
+

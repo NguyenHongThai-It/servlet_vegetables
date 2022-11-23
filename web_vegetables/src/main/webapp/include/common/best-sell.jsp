@@ -1,3 +1,6 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Entities.Product" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -17,28 +20,41 @@
         </div>
     </div>
     <div class="row">
-<%--        <%--%>
-<%--            String pageCurr = request.getAttribute("page").toString();--%>
-<%--            if (pageCurr == "contact") {--%>
+        <%
+            String pageCurr = request.getAttribute("page") != null ? request.getAttribute("page").toString() : "";
+            List<Product> listPro = request.getAttribute("listProduct") != null ? (List<Product>) request.getAttribute("listProduct") : new ArrayList<Product>();
+            for (Product p : listPro) {
+                if (pageCurr == "contact") {
 
 
-<%--        %>--%>
+        %>
 
-<%--        <div class="col-lg-4 col-md-6 col-12  auto-width">--%>
-<%--            <jsp:include page="card.jsp"></jsp:include>--%>
-<%--        </div>--%>
-<%--        <% }%>--%>
-<%--        <% if (pageCurr != "contact" && pageCurr != "policy") {%>--%>
+        <div class="col-lg-4 col-md-6 col-12  auto-width">
+            <jsp:include page="card.jsp">
+                <jsp:param name="name" value="<%=p.getName()%>"/>
+                <jsp:param name="img" value="<%=p.getImg()%>"/>
+                <jsp:param name="disc_extra" value="<%=p.getDiscExtra()%>"/>
+                <jsp:param name="price" value="<%=p.getPrice()%>"/>
+                <jsp:param name="price_disc" value="<%=p.getPriceDisc()%>"/>
+            </jsp:include>
+        </div>
 
-<%--        <div class="col-lg-3 col-md-6 col-12  auto-width">--%>
-<%--            <jsp:include page="card.jsp"></jsp:include>--%>
-<%--        </div>--%>
 
-<%--        <div class="col-lg-3 col-md-6 col-12  auto-width">--%>
-<%--            <jsp:include page="card.jsp"></jsp:include>--%>
-<%--        </div>--%>
+        <% }%>
+        <% if (pageCurr != "contact" && pageCurr != "policy") {%>
 
-<%--        <% }%>--%>
+        <div class="col-lg-3 col-md-6 col-12  auto-width">
+            <jsp:include page="card.jsp">
+                <jsp:param name="name" value="<%=p.getName()%>"/>
+                <jsp:param name="img" value="<%=p.getImg()%>"/>
+                <jsp:param name="disc_extra" value="<%=p.getDiscExtra()%>"/>
+                <jsp:param name="price" value="<%=p.getPrice()%>"/>
+                <jsp:param name="price_disc" value="<%=p.getPriceDisc()%>"/>
+            </jsp:include>
+        </div>
 
+
+        <% }%>
+        <% }%>
     </div>
 </section>

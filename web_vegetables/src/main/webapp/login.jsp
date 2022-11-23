@@ -658,7 +658,7 @@
                 class="container mt-5 mx-auto d-flex align-items-center justify-content-center"
         >
             <div class="px-3 text-center" style="width: 40rem">
-                <form class="login">
+                <form class="login" action="<%=request.getContextPath()%>/login" method="post">
                     <h1 class="text-gray_8">Đăng nhập</h1>
                     <div class="login-form mt-4">
                         <div
@@ -680,7 +680,7 @@
                         >
                             <input
                                     type="password"
-                                    name="email"
+                                    name="password"
                                     id="password"
                                     class="login-form__password border-0 p-3 w-100 fs-4"
                                     placeholder="Mật khẩu"
@@ -692,7 +692,7 @@
 
                         <button
                                 class="px-5 py-3 border-0 bg-red_2 text-white_1 mt-4 fw-bold rounded-3 fs-4"
-                                type="button"
+                                type="submit"
                         >
                             Đăng nhập
                         </button>

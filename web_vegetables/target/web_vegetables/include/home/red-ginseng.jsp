@@ -1,4 +1,10 @@
+<%@ page import="Entities.Category" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<Category> listCat = request.getAttribute("listRedGinseng") != null ? (List<Category>) request.getAttribute("listRedGinseng") : new ArrayList<Category>();
+%>
 <section id="red-ginseng">
     <!-- Hồng Sâm -->
     <div class="row mt-5 pt-3">
@@ -20,68 +26,20 @@
                             <span><b class="fs-2">Hồng Sâm Hàn Quốc</b></span>
                         </div>
                     </div>
+                    <%
+                        for (Category cat : listCat) {
 
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Cao Hồng Sâm Hàn Quốc</li>
-                    </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Sâm Mật Ong Hàn Quốc</li>
-                    </a>
 
+                    %>
                     <a
-                            href="./product.html"
+                            href="<%=request.getContextPath()%> <%=cat.getSlug()%>"
                             class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                     >
-                        <li>Nhân Sâm Tươi Hàn Quốc</li>
+                        <li><%=cat.getName()%>
+                        </li>
                     </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Sâm Khô Hàn Quốc</li>
-                    </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Trà Hồng Sâm Hàn Quốc Và Bột Sâm</li>
-                    </a>
-                    <a
-                            href="./product.html#"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Kẹo Sâm Hàn Quốc</li>
-                    </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Viên Hồng Sâm Hàn Quốc</li>
-                    </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Hắc Sâm Hàn Quốc</li>
-                    </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Rượu Sâm Linh Chi</li>
-                    </a>
-                    <a
-                            href="./product.html"
-                            class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                    >
-                        <li>Nước Hồng Sâm Hàn Quốc</li>
-                    </a>
+                    <% }%>
+
 
                     <a href="./product.html" class="category-btn">
                         <div class="category-btn--border">

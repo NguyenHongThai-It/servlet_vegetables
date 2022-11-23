@@ -47,6 +47,9 @@ public class Product {
         this.form = form;
     }
 
+    public Product() {
+    }
+
     @Override
     public String toString() {
         return "Product{" +
