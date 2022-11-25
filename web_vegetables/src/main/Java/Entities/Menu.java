@@ -4,7 +4,7 @@ public class Menu {
     private String id;
     private String name;
     private String link;
-    private String types;
+    private int types;
     private int position;
     private String slug;
     private int status;
@@ -12,7 +12,7 @@ public class Menu {
     private String updatedAt;
     private int img;
 
-    public Menu(String id, String name, String link, String types, int position, String slug, int status, String createdAt, String updatedAt, int img) {
+    public Menu(String id, String name, String link, int types, int position, String slug, int status, String createdAt, String updatedAt, int img) {
         this.id = id;
         this.name = name;
         this.link = link;
@@ -23,6 +23,9 @@ public class Menu {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.img = img;
+    }
+
+    public Menu() {
     }
 
     public String getId() {
@@ -49,11 +52,11 @@ public class Menu {
         this.link = link;
     }
 
-    public String getTypes() {
+    public int getTypes() {
         return types;
     }
 
-    public void setTypes(String types) {
+    public void setTypes(int types) {
         this.types = types;
     }
 

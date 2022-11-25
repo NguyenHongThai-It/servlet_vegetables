@@ -21,6 +21,10 @@ public class ServletLogin extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (new Utils().authentication(request)) {
+            response.sendRedirect(request.getContextPath() + "/home");
+            return;
+        }
         new Utils().passListNav(request);
         request.getRequestDispatcher("login.jsp").forward(request, response);
 
@@ -32,10 +36,16 @@ public class ServletLogin extends HttpServlet {
         handleLogin(request, response);
     }
 
-    public void handleLogin(HttpServletRequest request, HttpServletResponse response) {
+    public void handleLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         User user = new UserModel().getUser(email, password);
+
+        if (user == null) {
+            request.setAttribute("errorLogin", "Mật khẩu hoặc tài khoản sai");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
         request.getSession().invalidate();
         HttpSession newSession = request.getSession(true);
         newSession.setAttribute("user", user);

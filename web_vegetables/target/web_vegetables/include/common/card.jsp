@@ -7,10 +7,13 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="vi_VN"/>
 
 <%
+    String id = request.getParameter("id") != null ? request.getParameter("id").toString() : "";
     String name = request.getParameter("name") != null ? request.getParameter("name").toString() : "";
-    String img = request.getParameter("img") != null ? request.getParameter("img") : "";
+    String thumbnail = request.getParameter("thumbnail") != null ? request.getParameter("thumbnail") : "";
     String disc_extra = request.getParameter("disc_extra") != null ? request.getParameter("disc_extra") : "";
     String price = request.getParameter("price") != null ? request.getParameter("price") : "";
     String price_disc = request.getParameter("price_disc") != null ? request.getParameter("price_disc") : "";
@@ -40,9 +43,12 @@
                             <span
                                     class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
                             >
-                              <%=price%>> đ</span
+                                                        <fmt:formatNumber value="<%=price%>" type="currency"/>
+
+                              đ</span
                             >
-                    <p class="media-fontsize-lg lh-1"><%=price_disc%>
+                    <p class="media-fontsize-lg lh-1"><fmt:formatNumber value="<%=price_disc%>" type="currency"/>
+
                     </p>
                 </div>
             </div>
@@ -77,7 +83,7 @@
                             class="btn btn-primary"
                     >
                         <a
-                                href="<%= request.getContextPath()%>/detail-product.jsp"
+                                href="<%= request.getContextPath()%>/detail-product?id=<%=id%>"
                                 class="media-fontsize-sm btn btn-light_1"
                         >
                             <b

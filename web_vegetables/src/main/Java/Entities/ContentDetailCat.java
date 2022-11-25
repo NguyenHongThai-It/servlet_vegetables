@@ -11,6 +11,9 @@ public class ContentDetailCat {
         this.status = status;
     }
 
+    public ContentDetailCat() {
+    }
+
     public int getId() {
         return id;
     }

@@ -1,3 +1,6 @@
+<%@ page import="java.util.List" %>
+<%@ page import="Entities.New" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,6 +10,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<New> ls = request.getAttribute("listNew") != null ? (List<New>) request.getAttribute("listNew") : new ArrayList<New>();
+%>
 <div id="other-news" class="text-center">
     <div
             class="item-label--goldenBackground item-label--clipPath p-1 mt-4 m-auto"
@@ -24,14 +30,24 @@
 
     <!-- Sản phẩm bán chạy -->
     <div class="row row-cols-number-auto">
+        <%
+            for (New n : ls) {
+
+
+        %>
         <div class="col-lg-4 col-md-6 col-12 auto-width">
-            <jsp:include page="card-new.jsp"></jsp:include>
+            <jsp:include page="card-new.jsp">
+                <jsp:param name="name" value="<%=n.getId()%>"/>
+
+                <jsp:param name="name" value="<%=n.getName()%>"/>
+                <jsp:param name="description" value="<%=n.getDescription()%>"/>
+                <jsp:param name="thumbnail" value="<%=n.getThumbnail()%>"/>
+
+
+            </jsp:include>
         </div>
-        <div class="col-lg-4 col-md-6 col-12 auto-width">
-            <jsp:include page="card-new.jsp"></jsp:include>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 auto-width">
-            <jsp:include page="card-new.jsp"></jsp:include>
-        </div>
+        <% }%>
+
+
     </div>
 </div>

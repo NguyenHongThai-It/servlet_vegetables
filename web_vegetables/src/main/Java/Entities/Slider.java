@@ -25,6 +25,9 @@ public class Slider {
         this.imgStoreId = imgStoreId;
     }
 
+    public Slider() {
+    }
+
     public String getId() {
         return id;
     }

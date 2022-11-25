@@ -25,6 +25,9 @@ public class ImgStore {
         this.content = content;
     }
 
+    public ImgStore() {
+    }
+
     public String getId() {
         return id;
     }

@@ -9,6 +9,9 @@ public class Admin {
         this.userId = userId;
     }
 
+    public Admin() {
+    }
+
     public String getId() {
         return id;
     }

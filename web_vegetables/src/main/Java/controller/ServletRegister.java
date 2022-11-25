@@ -21,6 +21,10 @@ public class ServletRegister extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (new Utils().authentication(request)) {
+            response.sendRedirect(request.getContextPath() + "/home");
+            return;
+        }
         new Utils().passListNav(request);
 
         request.getRequestDispatcher("register.jsp").forward(request, response);
@@ -35,6 +39,12 @@ public class ServletRegister extends HttpServlet {
         String tel = request.getParameter("tel");
 
         User user = new UserModel().createUser(email, password, name, surname, tel);
+        if (user == null) {
+            request.setAttribute("errorLogin", "Email đã tồn tại");
+            response.sendRedirect(request.getContextPath() + "/home");
+
+            return;
+        }
         request.getSession().invalidate();
         HttpSession newSession = request.getSession(true);
         newSession.setAttribute("user", user);

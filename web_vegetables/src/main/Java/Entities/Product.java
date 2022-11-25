@@ -10,7 +10,7 @@ public class Product {
     private int price;
     private String specification;
     private String origin;
-    private String band;
+    private String brand;
     private int priceDisc;
     private int amount;
     private String codeDisc;
@@ -22,8 +22,9 @@ public class Product {
     private int bestSell;
     private int forOld;
     private int form;
+    private String thumbnail;
 
-    public Product(String id, String name, String slug, String desc, int rate, int amountSold, int price, String specification, String origin, String band, int priceDisc, int amount, String codeDisc, int discExtra, String contentDetailProduct, int img, int types, int outstanding, int bestSell, int forOld, int form) {
+    public Product(String id, String name, String slug, String desc, int rate, int amountSold, int price, String specification, String origin, String brand, int priceDisc, int amount, String codeDisc, int discExtra, String contentDetailProduct, int img, int types, int outstanding, int bestSell, int forOld, int form, String thumbnail) {
         this.id = id;
         this.name = name;
         this.slug = slug;
@@ -33,7 +34,7 @@ public class Product {
         this.price = price;
         this.specification = specification;
         this.origin = origin;
-        this.band = band;
+        this.brand = brand;
         this.priceDisc = priceDisc;
         this.amount = amount;
         this.codeDisc = codeDisc;
@@ -45,6 +46,15 @@ public class Product {
         this.bestSell = bestSell;
         this.forOld = forOld;
         this.form = form;
+        this.thumbnail = thumbnail;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public Product() {
@@ -62,7 +72,7 @@ public class Product {
                 ", price=" + price +
                 ", specification='" + specification + '\'' +
                 ", origin='" + origin + '\'' +
-                ", band='" + band + '\'' +
+                ", brand='" + brand + '\'' +
                 ", priceDisc=" + priceDisc +
                 ", amount=" + amount +
                 ", codeDisc='" + codeDisc + '\'' +
@@ -74,6 +84,7 @@ public class Product {
                 ", bestSell=" + bestSell +
                 ", forOld=" + forOld +
                 ", form=" + form +
+                ", thumbnail='" + thumbnail + '\'' +
                 '}';
     }
 
@@ -149,12 +160,12 @@ public class Product {
         this.origin = origin;
     }
 
-    public String getBand() {
-        return band;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setBand(String band) {
-        this.band = band;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public int getPriceDisc() {

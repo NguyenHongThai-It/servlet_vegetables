@@ -179,21 +179,7 @@
             </section>
 
             <section id="photo-library" class="photo-library">
-                <div class="mt-5 row text-center">
-                    <h1 class="text-red_1 content mb-2 fw-bold text-center">
-                        THƯ VIỆN ẢNH
-                    </h1>
-                    <div class="col-6 col-md-4 col-lg-3 mt-4">
-                        <c:import url="include/about/album.jsp"></c:import>
-                    </div>
-
-                    <div class="col-6 col-md-4 col-lg-3 mt-4">
-                        <c:import url="include/about/album.jsp"></c:import>
-
-                    </div>
-
-
-                </div>
+                <jsp:include page="include/about/album.jsp"></jsp:include>
             </section>
         </div>
 

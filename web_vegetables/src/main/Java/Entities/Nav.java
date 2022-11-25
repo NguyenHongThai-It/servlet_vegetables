@@ -13,6 +13,9 @@ public class Nav {
         this.slug = slug;
     }
 
+    public Nav() {
+    }
+
     public String getId() {
         return id;
     }

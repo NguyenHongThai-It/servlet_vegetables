@@ -17,6 +17,9 @@ public class OrderSuccess {
         this.status = status;
     }
 
+    public OrderSuccess() {
+    }
+
     public String getId() {
         return id;
     }

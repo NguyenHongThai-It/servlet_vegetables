@@ -17,6 +17,9 @@ public class Review {
         this.createdAt = createdAt;
     }
 
+    public Review() {
+    }
+
     public String getId() {
         return id;
     }

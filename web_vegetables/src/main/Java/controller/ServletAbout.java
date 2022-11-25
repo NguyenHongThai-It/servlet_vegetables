@@ -1,6 +1,8 @@
 package controller;
 
+import Entities.ImgStore;
 import Entities.Nav;
+import Model.ImgStoreModel;
 import Model.NavModel;
 import utils.Utils;
 
@@ -15,17 +17,32 @@ import java.util.List;
 
 @WebServlet("/about")
 public class ServletAbout extends HttpServlet {
-    @Resource(name = "jdbc/project")
-    private DataSource dataSource;
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        new Utils().passListNav(request);
+        Utils util = new Utils();
+        util.passListNav(request);
+        util.passListMenu(request, "listMenu");
+        util.passListCatById(request, "listRedGinseng", "1");
+        util.passListCatById(request, "listCordyceps", "2");
+        util.passListCatById(request, "listGanoderma", "3");
+        util.passListCatById(request, "listHerbal", "4");
+        util.passListCatById(request, "listCatSP", "5");
+        util.passListCatById(request, "listCatNew", "6");
+
+        getListImageAlbum(request, 3);
+        util.passSystemProductList(request, "listSP");
+
+        util.passContactInfor(request);
+
         request.getRequestDispatcher("about.jsp").forward(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void getListImageAlbum(HttpServletRequest request, int pos) {
+        List<ImgStore> listBlogCarousel = new ArrayList<ImgStore>();
 
+        listBlogCarousel = new ImgStoreModel().getImages(pos);
+        request.setAttribute("listImageAlbum", listBlogCarousel);
     }
 }

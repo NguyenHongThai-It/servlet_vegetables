@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="Entities.ImgStore" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 11/16/2022
@@ -6,6 +8,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<ImgStore> lbc = request.getAttribute("listBlogCarousel") != null ? (List<ImgStore>) request.getAttribute("listBlogCarousel") : new ArrayList<ImgStore>();
+%>
 <section id="blog" class="blog">
     <div class="content bg-white">
         <div
@@ -29,44 +34,23 @@
         </div>
 
         <div class="blog-carousel">
+            <%
+                for (ImgStore is : lbc) {
+
+
+            %>
             <div class="blog-carousel__item transform-scale-bigImg">
                 <a href="#" class="blog-carousel__link"
                 ><img
                         src="./asset/img/home/kien-thuc-ve-dtht-1.jpg"
                         alt=""
                         class="block-carousel__img"
-                />Kiến Thức Về ĐTHT</a
+                /><%=is.getContent()%>
+                </a
                 >
             </div>
+            <% }%>
 
-            <div class="blog-carousel__item transform-scale-bigImg">
-                <a href="#" class="blog-carousel__link"
-                ><img
-                        src="./asset/img/home/kien-thuc-cua-hang.jpg"
-                        alt=""
-                        class="block-carousel__img"
-                />Bài Viết Từ Hệ Thống K-GINI</a
-                >
-            </div>
-
-            <div class="blog-carousel__item transform-scale-bigImg">
-                <a href="#" class="blog-carousel__link"
-                ><img
-                        src="./asset/img/home/kien-thuc-cua-hang.jpg"
-                        alt=""
-                        class="block-carousel__img"
-                />Bài Viết Từ Hệ Thống K-GINI</a
-                >
-            </div>
-            <div class="blog-carousel__item transform-scale-bigImg">
-                <a href="#" class="blog-carousel__link"
-                ><img
-                        src="./asset/img/home/kien-thuc-cua-hang.jpg"
-                        alt=""
-                        class="block-carousel__img"
-                />Bài Viết Từ Hệ Thống K-GINI</a
-                >
-            </div>
 
         </div>
     </div>

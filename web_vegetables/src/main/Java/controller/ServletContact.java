@@ -1,7 +1,9 @@
 package controller;
 
 import Entities.Category;
+import Entities.New;
 import Model.CategoryModel;
+import Model.NewModel;
 import utils.Utils;
 
 import javax.servlet.*;
@@ -12,16 +14,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "ServletContact", value = "/ServletContact")
+@WebServlet("/contact")
 public class ServletContact extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        new Utils().passListNav(request);
-        getListCatRedGinseng(request, "listRedGinseng", "1");
-        getListCatRedGinseng(request, "listCordyceps", "2");
-        getListCatRedGinseng(request, "listGanoderma", "3");
-        getListCatRedGinseng(request, "listHerbal", "4");
+
+        Utils util = new Utils();
+        util.passListNav(request);
+        util.passListMenu(request, "listMenu");
+        util.passListCatById(request, "listRedGinseng", "1");
+        util.passListCatById(request, "listCordyceps", "2");
+        util.passListCatById(request, "listGanoderma", "3");
+        util.passListCatById(request, "listHerbal", "4");
+        util.passListCatById(request, "listCatSP", "5");
+        util.passListCatById(request, "listCatNew", "6");
+        util.passListProductWithKey(request, 3,"bestsell");
+        passListNew(request, 3);
+        util.passContactInfor(request);
+
+        request.setAttribute("page", "contact");
         request.getRequestDispatcher("contact.jsp").forward(request, response);
+
 
     }
 
@@ -30,11 +43,12 @@ public class ServletContact extends HttpServlet {
 
     }
 
-    private void getListCatRedGinseng(HttpServletRequest request, String name, String idParent) {
-        List<Category> listRedGinseng = new ArrayList<Category>();
 
-        listRedGinseng = new CategoryModel().getListCatRedGinseng(idParent);
-        request.setAttribute(name, listRedGinseng);
+    private void passListNew(HttpServletRequest request, int lim) {
+        List<New> ls = null;
 
+        ls = new NewModel().getListNew(lim);
+        request.setAttribute("listNew", ls);
     }
 }
+

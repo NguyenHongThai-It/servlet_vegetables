@@ -1,4 +1,6 @@
-<%--
+<%@ page import="Entities.Category" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 11/15/2022
@@ -6,6 +8,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<Category> listCat1 = request.getAttribute("listCordyceps") != null ? (List<Category>) request.getAttribute("listCordyceps") : new ArrayList<Category>();
+    List<Category> listCat2 = request.getAttribute("listGanoderma") != null ? (List<Category>) request.getAttribute("listGanoderma") : new ArrayList<Category>();
+    List<Category> listCat3 = request.getAttribute("listHerbal") != null ? (List<Category>) request.getAttribute("listHerbal") : new ArrayList<Category>();
+    List<Category> listCat4 = request.getAttribute("listRedGinseng") != null ? (List<Category>) request.getAttribute("listRedGinseng") : new ArrayList<Category>();
+    List<Category> listCat6 = request.getAttribute("listCatNew") != null ? (List<Category>) request.getAttribute("listCatNew") : new ArrayList<Category>();
+
+%>
 <div class="wrap-left col-md-3 col-12">
     <section id="news">
         <!-- Hồng Sâm -->
@@ -25,42 +35,21 @@
                                 <span><b class="fs-2">Tin tức </b></span>
                             </div>
                         </div>
+                        <%
+                            for (Category cat : listCat6) {
+
+
+                        %>
                         <a
-                                href="./product.html"
+                                href="<%=request.getContextPath()%><%=cat.getSlug()%>"
                                 class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                         >
-                            <li>Kiến Thức Về Hồng Sâm</li>
+                            <li><%=cat.getName()%>
+                            </li>
                         </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Kiến Thức Về Linh Chi</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Kiến Thức Về ĐTHT</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Bài Viết Từ Hệ Thống K-GIN</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Kiến Thức Về Thảo Dược</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Kiến Thức Về Nhân Sâm</li>
-                        </a>
+                        <%} %>
+
+
                     </div>
                 </div>
             </div>
@@ -83,66 +72,20 @@
                                 <span><b class="fs-2">Hồng Sâm Hàn Quốc</b></span>
                             </div>
                         </div>
+                        <%
+                            for (Category cat : listCat4) {
+
+
+                        %>
                         <a
-                                href="./product.html"
+                                href="<%=request.getContextPath()%><%=cat.getSlug()%>"
                                 class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                         >
-                            <li>Kẹo Sâm Hàn Quốc</li>
+                            <li><%=cat.getName()%>
+                            </li>
                         </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Viên Hồng Sâm Hàn Quốc</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Hắc Sâm Hàn Quốc</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Rượu Sâm Linh Chi</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Nước Hồng Sâm Hàn Quốc</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Cao Hồng Sâm Hàn Quốc</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Sâm Mật Ong Hàn Quốc</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Nhân Sâm Tươi Hàn Quốc</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Sâm Khô Hàn Quốc</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Trà Hồng Sâm Hàn Quốc Và Bột Sâm</li>
-                        </a>
+                        <%} %>
+
                         <a href="./product.html" class="category-btn">
                             <div class="category-btn--border">
                                 <div class="category-btn--textField">Xem Tất Cả</div>
@@ -176,24 +119,19 @@
                             >
                             </div>
                         </div>
+                        <%
+                            for (Category cat : listCat1) {
+
+
+                        %>
                         <a
-                                href="#"
+                                href="<%=request.getContextPath()%><%=cat.getSlug()%>"
                                 class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                         >
-                            <li>Nước Đông Trùng Hạ Thảo</li>
+                            <li><%=cat.getName()%>
+                            </li>
                         </a>
-                        <a
-                                href="#"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Viên Đông Trùng Hạ Thảo</li>
-                        </a>
-                        <a
-                                href="#"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Cao Đông Trùng Hạ Thảo</li>
-                        </a>
+                        <%} %>
                         <a href="./product.html" class="category-btn">
                             <div class="category-btn--border">
                                 <div class="category-btn--textField">Xem Tất Cả</div>
@@ -224,24 +162,19 @@
                             >
                             </div>
                         </div>
+                        <%
+                            for (Category cat : listCat2) {
+
+
+                        %>
                         <a
-                                href="./product.html"
+                                href="<%=request.getContextPath()%><%=cat.getSlug()%>"
                                 class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                         >
-                            <li>Nấm Linh Chi Khô Hàn Quốc</li>
+                            <li><%=cat.getName()%>
+                            </li>
                         </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Cao Linh Chi Hàn Quốc</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Sản Phẩm Khác Từ Linh Chi</li>
-                        </a>
+                        <%} %>
                         <a href="./product.html" class="category-btn">
                             <div class="category-btn--border">
                                 <div class="category-btn--textField">Xem Tất Cả</div>
@@ -270,30 +203,19 @@
                                 <span><b class="fs-2">Thảo Dược Hàn Quốc</b></span>
                             </div>
                         </div>
+                        <%
+                            for (Category cat : listCat3) {
+
+
+                        %>
                         <a
-                                href="./product.html"
+                                href="<%=request.getContextPath()%><%=cat.getSlug()%>"
                                 class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                         >
-                            <li>An Cung Ngưu Hoàng</li>
+                            <li><%=cat.getName()%>
+                            </li>
                         </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Tinh Dầu Thông Đỏ</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Bổ Gan Giải Rượu</li>
-                        </a>
-                        <a
-                                href="./product.html"
-                                class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
-                        >
-                            <li>Sản Phẩm Khác</li>
-                        </a>
+                        <%} %>
                         <a href="./product.html" class="category-btn">
                             <div class="category-btn--border">
                                 <div class="category-btn--textField">Xem Tất Cả</div>

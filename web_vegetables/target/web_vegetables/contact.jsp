@@ -119,34 +119,8 @@
                             </p>
                         </div>
                     </div>
-                    <section id="best-seller" class="best-seller text-center">
-                        <div
-                                class="item-label--goldenBackground item-label--clipPath p-1 mt-4 m-auto"
-                                style="width: 27rem"
-                        >
-                            <div
-                                    class="item-label--redTextFeild item-label--clipPath label-Advertise"
-                                    style="padding: 0.7rem"
-                            >
-                <span class="fs-2 label-Advertise fw-bold"
-                >Sản Phẩm Bán Chạy</span
-                >
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-12 m-auto auto-width">
-                                <jsp:include page="include/common/card.jsp"></jsp:include>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-12 m-auto auto-width">
-                                <jsp:include page="include/common/card.jsp"></jsp:include>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-12 m-auto auto-width">
-                                <jsp:include page="include/common/card.jsp"></jsp:include>
-                            </div>
-                        </div>
-                    </section>
-
+                    <jsp:include page="include/common/best-sell.jsp"></jsp:include>
 
                     <%--  other news--%>
                     <c:import url="include/common/other-news.jsp"></c:import>

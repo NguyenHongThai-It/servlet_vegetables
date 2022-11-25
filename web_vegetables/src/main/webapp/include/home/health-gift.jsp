@@ -1,14 +1,21 @@
-<%--
+<%@ page import="Entities.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 11/16/2022
   Time: 8:32 PM
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<Product> listPro = request.getAttribute("listProductForOld") != null ? (List<Product>) request.getAttribute("listProductForOld") : new ArrayList<Product>();
+
+%>
 <section id="health-gift" class="health-gift">
     <div class="row mt-5 pt-3">
-        <div class="col col-lg-3 col-md-0 mt-4 mt-5">
+        <div class="col col-lg-3 col-md-0 mt-4 mt-5 col-12">
             <div class="category bg-leather_1 border">
                 <div class="list-group text-start">
                     <div
@@ -151,7 +158,7 @@
             </div>
         </div>
 
-        <div class="col col-lg-9 col-md-12">
+        <div class="col col-lg-9 col-md-12 col-12">
             <div class="row">
                 <div class="col-md-8 col-xl-6 auto-width m-auto">
                     <div
@@ -169,13 +176,23 @@
                 </div>
             </div>
             <div class="row row-cols-number-auto">
+                <%
+                    for (Product p : listPro) {
+
+
+                %>
                 <div class="col-lg-4 col-md-6 col-12  auto-width">
-                    <jsp:include page="../common/card.jsp"></jsp:include>
+                    <jsp:include page="../common/card.jsp">
+                        <jsp:param name="id" value="<%=p.getId()%>"/>
+                        <jsp:param name="name" value="<%=p.getName()%>"/>
+                        <jsp:param name="price" value="<%=p.getPrice()%>"/>
+                        <jsp:param name="price_disc" value="<%=p.getPriceDisc()%>"/>
+                        <jsp:param name="disc_extra" value="<%=p.getDiscExtra()%>"/>
+                        <jsp:param name="thumbnail" value="<%=p.getThumbnail()%>"/>
+                    </jsp:include>
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-12  auto-width">
-                    <jsp:include page="../common/card.jsp"></jsp:include>
-                </div>
+                <%} %>
 
 
             </div>

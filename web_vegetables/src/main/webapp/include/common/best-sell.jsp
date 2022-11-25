@@ -31,8 +31,9 @@
 
         <div class="col-lg-4 col-md-6 col-12  auto-width">
             <jsp:include page="card.jsp">
+                <jsp:param name="id" value="<%=p.getId()%>"/>
                 <jsp:param name="name" value="<%=p.getName()%>"/>
-                <jsp:param name="img" value="<%=p.getImg()%>"/>
+                <jsp:param name="thumbnail" value="<%=p.getThumbnail()%>"/>
                 <jsp:param name="disc_extra" value="<%=p.getDiscExtra()%>"/>
                 <jsp:param name="price" value="<%=p.getPrice()%>"/>
                 <jsp:param name="price_disc" value="<%=p.getPriceDisc()%>"/>
@@ -45,8 +46,9 @@
 
         <div class="col-lg-3 col-md-6 col-12  auto-width">
             <jsp:include page="card.jsp">
+                <jsp:param name="id" value="<%=p.getId()%>"/>
                 <jsp:param name="name" value="<%=p.getName()%>"/>
-                <jsp:param name="img" value="<%=p.getImg()%>"/>
+                <jsp:param name="thumbnail" value="<%=p.getThumbnail()%>"/>
                 <jsp:param name="disc_extra" value="<%=p.getDiscExtra()%>"/>
                 <jsp:param name="price" value="<%=p.getPrice()%>"/>
                 <jsp:param name="price_disc" value="<%=p.getPriceDisc()%>"/>

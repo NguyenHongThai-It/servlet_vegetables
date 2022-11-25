@@ -6,12 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <div class="card mt-4" style="background: var(--light_1)">
     <div
             class="item__img--hover d-flex align-items-center justify-content-center"
     >
         <img
-                src="./asset/img/contact/logo.jpg"
+                src="<%=request.getParameter("thumbnail").toString()%>"
                 class="img-ani card-img-top"
                 alt="..."
         />
@@ -19,18 +20,13 @@
     <div class="card-body">
         <h5 class="item__tittle--hover card-title mb-4 fs-4">
             <b
-            >Top 10+ Ý Tưởng Lựa Chọn Quà Tết Cho Khách Hàng Ý
-                Nghĩa Và Độc Đáo Nhất Trong Tầm Giá 1-2 Triệu</b
+            ><%=request.getParameter("name").toString()%>
+            </b
             >
         </h5>
         <div class="card-text d-flex mt-3">
             <p>
-                Khách hàng là nguồn sống của mỗi doanh nghiệp, vì
-                thế tạo mỗi quan hệ bền chắc và gắn bó với khách
-                hàng, đối tác là hoạt động quan trọng không thể
-                thiếu. Mỗi dịp cuối năm Tết đến các công ty luôn
-                phải đau đầu cân nhắc lựa chọn những món quà biếu
-                sang […]
+                <%=request.getParameter("description").toString()%>
             </p>
         </div>
     </div>

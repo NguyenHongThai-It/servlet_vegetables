@@ -17,6 +17,9 @@ public class New {
         this.newContentDetail = newContentDetail;
     }
 
+    public New() {
+    }
+
     public String getId() {
         return id;
     }

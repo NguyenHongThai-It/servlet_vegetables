@@ -11,6 +11,9 @@ public class ContentDetailProduct {
         this.status = status;
     }
 
+    public ContentDetailProduct() {
+    }
+
     public String getId() {
         return id;
     }

@@ -11,6 +11,9 @@ public class NewContentDetail {
         this.status = status;
     }
 
+    public NewContentDetail() {
+    }
+
     public String getId() {
         return id;
     }

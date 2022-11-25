@@ -1,6 +1,15 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="Entities.ContactInfor" %>
+<%@ page import="Entities.Category" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- Footer -->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    ContactInfor ci = request.getAttribute("contact_info") != null ? (ContactInfor) request.getAttribute("contact_info") : new ContactInfor();
+    List<Category> listCat = request.getAttribute("listRedGinseng") != null ? (List<Category>) request.getAttribute("listRedGinseng") : new ArrayList<Category>();
+
+%>
 
 <section class="footer" id="footer">
     <div
@@ -17,22 +26,22 @@
                         <div class="p-3">
                             <div class="footer__phone d-flex align-items-center">
                                 <i class="golden-text me-3 fa-solid fa-phone"></i>
-                                <span>Hotline: 1900.4626</span>
+                                <span>Hotline: <%=ci.getHotline()%></span>
                             </div>
                             <div class="footer__zalo d-flex align-items-center">
                                 <i class="golden-text me-3 fa-regular fa-message"></i>
-                                <span>Zalo, Sms: 0936.319.818</span>
+                                <span>Zalo, Sms: <%=ci.getZalo()%></span>
                             </div>
                             <div
                                     class="footer__mail d-flex align-items-center align-items-md-start align-items-lg-center"
                             >
                                 <i class="golden-text me-3 far fa-envelope"></i>
-                                <span>Email: contact@hongsamhanquoc.net</span>
+                                <span>Email: <%=ci.getEmail()%></span>
                             </div>
                             <div><b class="">Mua hàng trực tiếp tại cửa hàng </b></div>
                             <div class="footer__openTime d-flex align-items-center">
                                 <i class="golden-text me-3 fa-regular fa-clock"></i>
-                                <span> Thời gian mở cửa: 8h - 20h45</span>
+                                <span> Thời gian mở cửa: <%=ci.getTimeOpen()%></span>
                             </div>
                             <div class="footer__logo mt-3 transform-scale">
                                 <a href="#"
@@ -43,7 +52,7 @@
                                 /></a>
                             </div>
                             <h3 class="text-center fw-bold mt-5">
-                                Mã Ưu Đãi: KGIN3198
+                                Mã Ưu Đãi: <%=ci.getCodeDisc()%>
                             </h3>
                         </div>
                     </div>
@@ -107,6 +116,9 @@
                             DANH MỤC SẢN PHẨM
                         </h5>
                         <div class="p-3 border-secondary">
+                            <% for (Category cat : listCat) {
+
+                            %>
                             <div class="mb-3 transform-scale">
                                 <img
                                         src="https://kgin.com.vn/wp-content/uploads/2021/09/link4.png"
@@ -114,103 +126,13 @@
                                         style="height: 3.5rem; width: 3.5rem"
                                 />
                                 <a
-                                        href="./product.html"
+                                        href="<%=request.getContextPath()%><%=cat.getSlug()%>"
                                         class="text-decoration-none text-white"
                                 >
-                                    Nước Đông Trùng Hạ Thảo
+                                    <%=cat.getName()%>
                                 </a>
                             </div>
-                            <div class="mb-3 transform-scale">
-                                <img
-                                        src="https://kgin.com.vn/wp-content/uploads/2022/06/nam-linh-chi-icon.png"
-                                        alt="Hồng Sâm Linh Chi Hàn Quốc"
-                                        style="height: 3.5rem; width: 3.5rem"
-                                />
-                                <a
-                                        href="./product.html"
-                                        class="text-decoration-none text-white"
-                                >
-                                    Hồng Sâm Linh Chi Hàn Quốc
-                                </a>
-                            </div>
-                            <div class="mb-3 transform-scale">
-                                <img
-                                        src="https://kgin.com.vn/wp-content/uploads/2022/08/sam-han-quoc-01.png"
-                                        alt="Hắc sâm"
-                                        style="height: 3.5rem; width: 3.5rem"
-                                />
-                                <a
-                                        href="./product.html"
-                                        class="text-decoration-none text-white"
-                                >
-                                    Hắc sâm
-                                </a>
-                            </div>
-                            <div class="mb-3 transform-scale">
-                                <img
-                                        src="https://kgin.com.vn/wp-content/uploads/2022/08/cao-linh-chi-1.png"
-                                        alt="Cao linh chi hộp gỗ"
-                                        style="height: 3.5rem; width: 3.5rem"
-                                />
-                                <a
-                                        href="./product.html"
-                                        class="text-decoration-none text-white"
-                                >
-                                    Cao linh chi hộp gỗ
-                                </a>
-                            </div>
-                            <div class="mb-3 transform-scale">
-                                <img
-                                        src="https://kgin.com.vn/wp-content/uploads/2022/08/keo-sam-han-quoc-1.png"
-                                        alt="Kẹo sâm không đường"
-                                        style="height: 3.5rem; width: 3.5rem"
-                                />
-                                <a
-                                        href="./product.html"
-                                        class="text-decoration-none text-white"
-                                >
-                                    Kẹo sâm không đường
-                                </a>
-                            </div>
-                            <div class="mb-3 transform-scale">
-                                <img
-                                        src="https://kgin.com.vn/wp-content/uploads/2022/08/sam-han-quoc-01.png"
-                                        alt="Sâm mật ong Hàn Quốc"
-                                        style="height: 3.5rem; width: 3.5rem"
-                                />
-                                <a
-                                        href="./product.html"
-                                        class="text-decoration-none text-white"
-                                >
-                                    Sâm mật ong Hàn Quốc
-                                </a>
-                            </div>
-                            <div class="mb-3 transform-scale">
-                                <img
-                                        src="https://kgin.com.vn/wp-content/uploads/2022/08/cao-dong-trung-1.png"
-                                        alt="Đông trùng hạ thảo dạng viên"
-                                        style="height: 3.5rem; width: 3.5rem"
-                                />
-                                <a
-                                        href="./product.html"
-                                        class="text-decoration-none text-white"
-                                >
-                                    Đông trùng hạ thảo dạng viên
-                                </a>
-                            </div>
-                            <div class="mb-3 transform-scale">
-                                <img
-                                        src="https://kgin.com.vn/wp-content/uploads/2022/08/sam-han-quoc-01.png"
-                                        alt="sâm tẩm mật ong nguyên củ"
-                                        style="height: 3.5rem; width: 3.5rem"
-                                />
-                                <a
-                                        href="./product.html"
-                                        class="text-decoration-none text-white"
-                                >
-                                    Sâm tẩm mật ong nguyên củ
-                                </a>
-                            </div>
+                            <% }%>
                         </div>
                     </div>
                 </div>

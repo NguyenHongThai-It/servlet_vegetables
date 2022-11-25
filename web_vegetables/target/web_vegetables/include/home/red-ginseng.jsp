@@ -1,9 +1,12 @@
 <%@ page import="Entities.Category" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="Entities.Product" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     List<Category> listCat = request.getAttribute("listRedGinseng") != null ? (List<Category>) request.getAttribute("listRedGinseng") : new ArrayList<Category>();
+    List<Product> listPro = request.getAttribute("listProductBy1") != null ? (List<Product>) request.getAttribute("listProductBy1") : new ArrayList<Product>();
+
 %>
 <section id="red-ginseng">
     <!-- Hồng Sâm -->
@@ -52,13 +55,24 @@
 
         <div class="col col-lg-9 col-md-12 col-12">
             <div class="row row-cols-number-auto">
-                <div class="col-lg-4 col-md-6 col-12  auto-width">
-                    <jsp:include page="../common/card.jsp"></jsp:include>
-                </div>
 
+                <%
+                    for (Product p : listPro) {
+
+
+                %>
                 <div class="col-lg-4 col-md-6 col-12  auto-width">
-                    <jsp:include page="../common/card.jsp"></jsp:include>
+                    <jsp:include page="../common/card.jsp">
+                        <jsp:param name="id" value="<%=p.getId()%>"/>
+
+                        <jsp:param name="name" value="<%=p.getName()%>"/>
+                        <jsp:param name="price" value="<%=p.getPrice()%>"/>
+                        <jsp:param name="price_disc" value="<%=p.getPriceDisc()%>"/>
+                        <jsp:param name="disc_extra" value="<%=p.getDiscExtra()%>"/>
+                        <jsp:param name="thumbnail" value="<%=p.getThumbnail()%>"/>
+                    </jsp:include>
                 </div>
+                <%} %>
 
 
             </div>

@@ -1,12 +1,7 @@
 package controller;
 
-import Entities.Category;
-import Entities.Nav;
-import Entities.Service;
-import Model.CategoryModel;
-import Model.NavModel;
-import Model.ProductModel;
-import Model.ServiceModel;
+import Entities.*;
+import Model.*;
 import utils.Utils;
 
 import javax.annotation.Resource;
@@ -23,16 +18,39 @@ import java.util.List;
 public class ServletHome extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utils util = new Utils();
+
         util.passListNav(request);
-        util.passListBestSell(request);
+
+        util.passListMenu(request, "listMenu");
+
+        getListProductWithKey(request, 4, "bestsell", "listProduct");
+        getListProductWithKey(request, 4, "forOld", "listProductForOld");
+
+
         getListService(request);
-        getListCatRedGinseng(request, "listRedGinseng", "1");
-        getListCatRedGinseng(request, "listCordyceps", "2");
-        getListCatRedGinseng(request, "listGanoderma", "3");
-        getListCatRedGinseng(request, "listHerbal", "4");
+
+        util.passListCatById(request, "listRedGinseng", "1");
+        util.passListCatById(request, "listCordyceps", "2");
+        util.passListCatById(request, "listGanoderma", "3");
+        util.passListCatById(request, "listHerbal", "4");
+        util.passListCatById(request, "listCatSP", "5");
+        util.passListCatById(request, "listCatNew", "6");
+
+        getListProductByCat(request, 1, "1", "listProductBy1");
+        getListProductByCat(request, 2, "2", "listProductBy2");
+        getListProductByCat(request, 3, "3", "listProductBy3");
+        getListProductByCat(request, 4, "4", "listProductBy4");
+
+        getHTMLNew(request);
+
+        util.passSystemProductList(request, "listSP");
+
+        getListBlogCarousel(request, 1);
+
+        util.passContactInfor(request);
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
 
 
@@ -46,14 +64,32 @@ public class ServletHome extends HttpServlet {
 
     }
 
-    private void getListCatRedGinseng(HttpServletRequest request, String name, String idParent) {
-        List<Category> listRedGinseng = new ArrayList<Category>();
 
-        listRedGinseng = new CategoryModel().getListCatRedGinseng(idParent);
-        request.setAttribute(name, listRedGinseng);
+    private void getHTMLNew(HttpServletRequest request) {
+        NewContentDetail ncd = new NewModel().getHTMLNew();
+        request.setAttribute("ncd", ncd);
 
     }
 
 
+    private void getListBlogCarousel(HttpServletRequest request, int pos) {
+        List<ImgStore> listBlogCarousel = new ArrayList<ImgStore>();
+
+        listBlogCarousel = new ImgStoreModel().getImages(pos);
+        request.setAttribute("listBlogCarousel", listBlogCarousel);
+    }
+
+    private void getListProductByCat(HttpServletRequest request, int typeCat, String idMenu, String name) {
+        List<Product> listPro = new ArrayList<Product>();
+
+        listPro = new ProductModel().getListProductByCat(typeCat, idMenu);
+        request.setAttribute(name, listPro);
+    }
+
+    private void getListProductWithKey(HttpServletRequest request, int limit, String key, String name) {
+        List<Product> listProduct = new ArrayList<Product>();
+        listProduct = new ProductModel().getProductListWithKey(limit, key);
+        request.setAttribute(name, listProduct);
+    }
 }
 

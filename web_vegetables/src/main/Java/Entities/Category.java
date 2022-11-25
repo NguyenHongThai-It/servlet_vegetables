@@ -12,9 +12,9 @@ public class Category {
     private int types;
     private String contentDetailCat;
     private int img;
-    private int parentId;
+    private String parentId;
 
-    public Category(String id, String name, String slug, int orders, String createdAt, String updatedAt, int isFooter, int status, int types, String contentDetailCat, int img, int parentId) {
+    public Category(String id, String name, String slug, int orders, String createdAt, String updatedAt, int isFooter, int status, int types, String contentDetailCat, int img, String parentId) {
         this.id = id;
         this.name = name;
         this.slug = slug;
@@ -27,6 +27,9 @@ public class Category {
         this.contentDetailCat = contentDetailCat;
         this.img = img;
         this.parentId = parentId;
+    }
+
+    public Category() {
     }
 
     public String getId() {
@@ -117,11 +120,11 @@ public class Category {
         this.img = img;
     }
 
-    public int getParentId() {
+    public String getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(String parentId) {
         this.parentId = parentId;
     }
 

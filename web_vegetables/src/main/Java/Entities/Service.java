@@ -15,6 +15,9 @@ public class Service {
         this.img = img;
     }
 
+    public Service() {
+    }
+
     @Override
     public String toString() {
         return "Service{" +

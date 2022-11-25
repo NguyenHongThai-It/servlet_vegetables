@@ -7,14 +7,27 @@ public class ContactInfor {
     private String timeOpen;
     private int img;
     private String codeDisc;
+    private String email;
 
-    public ContactInfor(String id, String hotline, String zalo, String timeOpen, int img, String codeDisc) {
+    public ContactInfor(String id, String hotline, String zalo, String timeOpen, int img, String codeDisc, String email) {
         this.id = id;
         this.hotline = hotline;
         this.zalo = zalo;
         this.timeOpen = timeOpen;
         this.img = img;
         this.codeDisc = codeDisc;
+        this.email = email;
+    }
+
+    public ContactInfor() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getId() {
@@ -67,13 +80,6 @@ public class ContactInfor {
 
     @Override
     public String toString() {
-        return "ContactInfor{" +
-                "id=" + id +
-                ", hotline='" + hotline + '\'' +
-                ", zalo='" + zalo + '\'' +
-                ", timeOpen='" + timeOpen + '\'' +
-                ", img=" + img +
-                ", codeDisc='" + codeDisc + '\'' +
-                '}';
+        return "ContactInfor{" + "id=" + id + ", hotline='" + hotline + '\'' + ", zalo='" + zalo + '\'' + ", timeOpen='" + timeOpen + '\'' + ", img=" + img + ", codeDisc='" + codeDisc + '\'' + '}';
     }
 }

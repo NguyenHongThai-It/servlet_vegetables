@@ -1,3 +1,7 @@
+<%@ page import="Entities.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: PC
@@ -5,7 +9,11 @@
   Time: 6:18 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="vi_VN"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +54,6 @@
     <jsp:include page="include/common/header.jsp"></jsp:include>
     <!-- Slider -->
     <jsp:include page="include/common/nav.jsp"></jsp:include>
-
     <!-- Contaienr -->
     <div
             class="main bg-leather pb-5"
@@ -63,7 +70,7 @@
                                 <div class="box-news box_cart__">
                                     <h1 class="title p-3 fw-bold">Giỏ hàng</h1>
                                     <div class="cart-wrap">
-                                        <form
+                                        <div
                                                 class="woocommerce-cart-form"
                                                 action="https://kgin.com.vn/cart/"
                                                 method="post"
@@ -79,9 +86,32 @@
                                                     <th class="product-subtotal">Thành tiền</th>
                                                     <th class="product-remove">Xoá</th>
                                                 </tr>
-                                                <jsp:include page="include/cart/row.jsp"></jsp:include>
+                                                <%
+                                                    List<Product> lp = request.getAttribute("listProduct") != null ? (List<Product>) request.getAttribute("listProduct") : new ArrayList<Product>();
+                                                    for (Product pro : lp) {
+                                                        int total = request.getAttribute("total" + pro.getId()) != null ? (int) request.getAttribute("total" + pro.getId()) : 0;
+                                                        int quantity = request.getAttribute("quantity" + pro.getId()) != null ? (int) request.getAttribute("quantity" + pro.getId()) : 0;
+
+                                                %>
+                                                <jsp:include page="include/cart/row.jsp">
+                                                    <jsp:param name="id" value="<%=pro.getId()%>"/>
+                                                    <jsp:param name="name" value="<%=pro.getName()%>"/>
+                                                    <jsp:param name="desc" value="<%=pro.getDesc()%>"/>
+                                                    <jsp:param name="spec" value="<%=pro.getSpecification()%>"/>
+                                                    <jsp:param name="thumbnail" value="<%=pro.getThumbnail()%>"/>
+                                                    <jsp:param name="price" value="<%=pro.getPriceDisc()%>"/>
+                                                    <jsp:param name="total" value="<%=total%>"/>
+                                                    <jsp:param name="quantity" value="<%=quantity%>"/>
+
+                                                </jsp:include>
+                                                <%
+                                                    }
+                                                %>
+                                                <c:forEach var="pro" items="${listProduct}">
+
+                                                </c:forEach>
                                             </table>
-                                        </form>
+                                        </div>
                                     </div>
                                     <div class="total-wrap d-lg-flex d-block">
                                         <div class="cart-content flex-grow-1">
@@ -110,10 +140,12 @@
                                                 <div class="total-number fw-bold fs-2">
                               <span class="woocommerce-Price-amount amount"
                               ><bdi
-                              >0<span
-                                      class="woocommerce-Price-currencySymbol"
-                              >đ</span
-                              ></bdi
+                              >
+                                  <fmt:formatNumber value="${total}" type="currency"/>
+                                  <span
+                                          class="woocommerce-Price-currencySymbol"
+                                  ></span
+                                  ></bdi
                               ></span
                               >
                                                 </div>
@@ -128,9 +160,10 @@
                                                             class="item-label--redTextFeild item-label--clipPath label-Advertise"
                                                             style="padding: 1rem"
                                                     >
-                                <span class="fs-4 label-Advertise fw-bold"
-                                >Tiếp tục mua sắm</span
-                                >
+                                                        <a href="<%=request.getContextPath()%>/home"
+                                                           class="fs-4 label-Advertise fw-bold text-orange_light"
+                                                        >Tiếp tục mua sắm</a
+                                                        >
                                                     </div>
                                                 </div>
                                                 <div
