@@ -17,10 +17,11 @@ import java.util.List;
 
 @WebServlet("/cart")
 public class ServletCart extends HttpServlet {
+    Utils util = new Utils();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Utils util = new Utils();
         if (!util.authentication(request)) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
@@ -42,7 +43,6 @@ public class ServletCart extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utils util = new Utils();
         if (!util.authentication(request)) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
@@ -57,7 +57,7 @@ public class ServletCart extends HttpServlet {
 
         if ("plus".equalsIgnoreCase(key)) cm.addOrUpdateCart(idProduct, user.getUserId(), 1);
         if ("minus".equalsIgnoreCase(key)) cm.minusCart(idProduct, user.getUserId(), Integer.parseInt(quantity) - 1);
-        if("remove".equalsIgnoreCase(key)) cm.removeCart(idProduct, user.getUserId());
+        if ("remove".equalsIgnoreCase(key)) cm.removeCart(idProduct, user.getUserId());
         response.sendRedirect(request.getContextPath() + "/cart");
     }
 

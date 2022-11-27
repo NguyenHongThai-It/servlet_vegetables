@@ -49,13 +49,7 @@ public class Product {
         this.thumbnail = thumbnail;
     }
 
-    public String getThumbnail() {
-        return thumbnail;
-    }
 
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
-    }
 
     public Product() {
     }
@@ -86,6 +80,13 @@ public class Product {
                 ", form=" + form +
                 ", thumbnail='" + thumbnail + '\'' +
                 '}';
+    }
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public String getId() {

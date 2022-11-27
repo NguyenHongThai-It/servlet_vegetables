@@ -9,21 +9,22 @@
 <fmt:setLocale value="vi_VN"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String id = request.getParameter("id").toString();
-    String name = request.getParameter("name").toString();
-    String desc = request.getParameter("desc").toString();
-    String spec = request.getParameter("spec").toString();
+    String id = request.getParameter("id");
+    String name = request.getParameter("name");
+    String desc = request.getParameter("desc");
+    String spec = request.getParameter("spec");
     String price = request.getParameter("price");
-    String thumbnail = request.getParameter("thumbnail").toString();
-    String total = (request.getParameter("total")).toString();
-    String quantity = (request.getParameter("quantity")).toString();
+    String thumbnail = request.getParameter("thumbnail");
+    String total = (request.getParameter("total"));
+    String quantity = (request.getParameter("quantity"));
+    String isShowInput = (request.getParameter("isShowInput"));
 
 %>
 <tbody>
 <tr class="row-item">
     <td class="product-name" data-title="Sản phẩm">
         <a
-                href="https://kgin.com.vn/nam-linh-chi-nui-da-vang-han-quoc/"
+                href="<%=request.getContextPath()%>/detail-product?id=<%=id%>"
         ><img
                 width="300"
                 height="300"
@@ -43,7 +44,7 @@
         <div class="cart-name-checkout">
             <a
                     class="title-product"
-                    href="https://kgin.com.vn/nam-linh-chi-nui-da-vang-han-quoc/"
+                    href="<%=request.getContextPath()%>/detail-product?id=<%=id%>"
             ><%=name%>
             </a
             >
@@ -77,6 +78,11 @@
                                     <span class="d-inline-block d-lg-none"
                                     >Số lượng</span
                                     >
+            <%
+                if (!"hidden".equalsIgnoreCase(isShowInput)) {
+
+            %>
+
             <div
                     class="item-label--goldenBackground kgin-sharp d-flex align-items-center sl-sp"
             >
@@ -113,6 +119,13 @@
                 </form>
 
             </div>
+            <%}%>
+            <%
+                if ("hidden".equalsIgnoreCase(isShowInput)) {
+
+            %>
+            <%=quantity%>
+            <%}%>
         </div>
     </td>
 
@@ -134,7 +147,10 @@
             >
         </div>
     </td>
+    <%
+        if (!"hidden".equalsIgnoreCase(isShowInput)) {
 
+    %>
     <td class="product-remove">
         <form action="<%=request.getContextPath()%>/cart" method="post">
 
@@ -152,5 +168,6 @@
             <input type="hidden" value="<%=id%>" name="idProduct"/>
         </form>
     </td>
+    <% }%>
 </tr>
 </tbody>

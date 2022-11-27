@@ -20,10 +20,10 @@
     %>
 
     <div class="col-6 col-md-4 col-lg-3 mt-4">
-        <a href="#">
+        <a href="<%=request.getContextPath()%>/album?pos=<%=img.getPosition()%>">
             <div class="transform-scale-bigImg p-2">
                 <img
-                        src="https://via.placeholder.com/280x190"
+                        src="<%=img.getImg()%>"
                         width="90%"
                         alt=""
                 />

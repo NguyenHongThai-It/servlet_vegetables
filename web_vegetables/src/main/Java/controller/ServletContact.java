@@ -16,10 +16,11 @@ import java.util.List;
 
 @WebServlet("/contact")
 public class ServletContact extends HttpServlet {
+    Utils util = new Utils();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Utils util = new Utils();
         util.passListNav(request);
         util.passListMenu(request, "listMenu");
         util.passListCatById(request, "listRedGinseng", "1");
@@ -28,7 +29,7 @@ public class ServletContact extends HttpServlet {
         util.passListCatById(request, "listHerbal", "4");
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
-        util.passListProductWithKey(request, 3,"bestsell");
+        util.passListProductWithKey(request, 3, "bestsell");
         passListNew(request, 3);
         util.passContactInfor(request);
 

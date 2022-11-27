@@ -42,7 +42,7 @@
                     <div
                             class="shop-system__img mt-3 transform-scale-bigImg m-auto"
                     >
-                        <a href="./album.jsp"
+                        <a href="<%=request.getContextPath()%>/about"
                         ><img src="./asset/img/home/51-vts.jpg" alt=""
                         /></a>
                     </div>
@@ -99,3 +99,4 @@
         </div>
     </div>
 </section>
+

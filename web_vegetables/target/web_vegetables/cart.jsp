@@ -49,6 +49,10 @@
 </head>
 
 <body>
+<%
+    List<Product> lp = request.getAttribute("listProduct") != null ? (List<Product>) request.getAttribute("listProduct") : new ArrayList<Product>();
+
+%>
 <div class="app">
     <!-- Header -->
     <jsp:include page="include/common/header.jsp"></jsp:include>
@@ -64,6 +68,11 @@
         <div class="container">
             <div class="full-page single-page cart-page">
                 <div class="container-site news">
+                    <%
+                        if (lp.size() != 0) {
+
+
+                    %>
                     <div class="row">
                         <div class="col-lg-12 main_cart__">
                             <section class="section-news">
@@ -87,11 +96,9 @@
                                                     <th class="product-remove">Xoá</th>
                                                 </tr>
                                                 <%
-                                                    List<Product> lp = request.getAttribute("listProduct") != null ? (List<Product>) request.getAttribute("listProduct") : new ArrayList<Product>();
                                                     for (Product pro : lp) {
-                                                        int total = request.getAttribute("total" + pro.getId()) != null ? (int) request.getAttribute("total" + pro.getId()) : 0;
+                                                        int totalRow = request.getAttribute("total" + pro.getId()) != null ? (int) request.getAttribute("total" + pro.getId()) : 0;
                                                         int quantity = request.getAttribute("quantity" + pro.getId()) != null ? (int) request.getAttribute("quantity" + pro.getId()) : 0;
-
                                                 %>
                                                 <jsp:include page="include/cart/row.jsp">
                                                     <jsp:param name="id" value="<%=pro.getId()%>"/>
@@ -100,16 +107,13 @@
                                                     <jsp:param name="spec" value="<%=pro.getSpecification()%>"/>
                                                     <jsp:param name="thumbnail" value="<%=pro.getThumbnail()%>"/>
                                                     <jsp:param name="price" value="<%=pro.getPriceDisc()%>"/>
-                                                    <jsp:param name="total" value="<%=total%>"/>
+                                                    <jsp:param name="total" value="<%=totalRow%>"/>
                                                     <jsp:param name="quantity" value="<%=quantity%>"/>
 
                                                 </jsp:include>
                                                 <%
                                                     }
                                                 %>
-                                                <c:forEach var="pro" items="${listProduct}">
-
-                                                </c:forEach>
                                             </table>
                                         </div>
                                     </div>
@@ -175,7 +179,7 @@
                                                     >
                                                         <a
                                                                 class="fs-4 label-Advertise fw-bold text-orange_light"
-                                                                href="<%= request.getContextPath()%>/checkout.jsp "
+                                                                href="<%= request.getContextPath()%>/checkout"
                                                         >Hoàn tất đơn hàng</a
                                                         >
                                                     </div>
@@ -187,6 +191,22 @@
                             </section>
                         </div>
                     </div>
+                    <% }%>
+                    <% if (lp.size() == 0) {
+                    %>
+                    <div class="d-flex flex-column align-items-center justify-content-center">
+                        <div style="max-width: 30rem; ">
+                            <img src="https://e-commerce-with-react-typescript.vercel.app/no_item.png" alt=""
+                                 class="w-100 h-100">
+                        </div>
+                        <p class="fw-bold my-2 fs-4" style="color: rgba(0, 0, 0, 0.4);">Giỏ hàng của bạn đang trống.</p>
+                        <a href="<%=request.getContextPath()%>/home"
+                           class="text-white fw-bold px-4 py-3 fs-2 bg-red_2 rounded-2 mt-2">Quay
+                            lại
+                            mua hàng</a>
+
+                    </div>
+                    <% }%>
                 </div>
             </div>
         </div>

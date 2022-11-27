@@ -1,4 +1,4 @@
-<%--
+<%@ page import="Entities.User" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 11/18/2022
@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    User u = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,18 +69,20 @@
                                             type="text"
                                             name="fullName"
                                             class="Checkout__Right"
+                                            value="<%=u.getEmail()%>"
                                     />
                                 </div>
                                 <div class="Checkout__Container d-flex pt-3 pb-3">
                                     <p class="Checkout__Left">Số điện thoại (*)</p>
-                                    <input type="text" name="Phone" class="Checkout__Right"/>
+                                    <input type="tel" name="Phone" class="Checkout__Right  " value="<%=u.getPhone()%>"
+                                    />
                                 </div>
                                 <div class="Checkout__Container d-flex pt-3 pb-3">
                                     <p class="Checkout__Left">Địa chỉ giao hàng (*)</p>
                                     <input
                                             type="text"
                                             name="addrees"
-                                            class="Checkout__Right"
+                                            class="Checkout__Right" value="<%=u.getAddress()%>"
                                     />
                                 </div>
                                 <div class="Checkout__Container d-flex pt-3 pb-3">
@@ -97,6 +102,7 @@
                                                         name="payment"
                                                         id="payment-Offline"
                                                         class="me-2"
+                                                        checked
                                                 />
                                                 <label for="payment-Offline" class="fw-bold">
                                                     Thanh toán khi nhận hàng
@@ -234,20 +240,21 @@
                             >
                                 <span class="">(Chưa bao gồm VAT)</span>
                                 <div class="col-5 col-md-3 col-lg-5">
-                                    <div
-                                            class="item-label--goldenBackground item-label--clipPath p-1 m-auto"
+                                    <form action="<%=request.getContextPath()%>/checkout" method="post"
+                                          class="item-label--goldenBackground item-label--clipPath p-1 m-auto"
                                     >
                                         <div
                                                 class="item-label--redTextFeild item-label--clipPath label-Advertise"
                                                 style="padding: 0.7rem"
                                         >
-                                            <a
-                                                    class="fs-2 label-Advertise fw-bold text-orange_light"
-                                                    href="<%=request.getContextPath()%>/thank-you.jsp"
-                                            >Hoàn Tất</a
+                                            <button
+                                                    type="submit"
+                                                    class="fs-2 label-Advertise fw-bold text-orange_light bg-transparent border-0"
+                                            >Hoàn Tất
+                                            </button
                                             >
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -8,8 +8,9 @@ public class SystemProduct {
     private String zalo;
     private String coordinate;
     private String img;
+    private String imgMap;
 
-    public SystemProduct(String id, String name, String location, String hotline, String zalo, String coordinate, String img) {
+    public SystemProduct(String id, String name, String location, String hotline, String zalo, String coordinate, String img, String imgMap) {
         this.id = id;
         this.name = name;
         this.location = location;
@@ -17,6 +18,7 @@ public class SystemProduct {
         this.zalo = zalo;
         this.coordinate = coordinate;
         this.img = img;
+        this.imgMap = imgMap;
     }
 
     public SystemProduct() {
@@ -31,7 +33,17 @@ public class SystemProduct {
                 ", hotline='" + hotline + '\'' +
                 ", zalo='" + zalo + '\'' +
                 ", coordinate='" + coordinate + '\'' +
+                ", img='" + img + '\'' +
+                ", imgMap='" + imgMap + '\'' +
                 '}';
+    }
+
+    public String getImgMap() {
+        return imgMap;
+    }
+
+    public void setImgMap(String imgMap) {
+        this.imgMap = imgMap;
     }
 
     public String getId() {

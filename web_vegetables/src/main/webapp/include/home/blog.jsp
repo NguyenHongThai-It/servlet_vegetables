@@ -40,9 +40,9 @@
 
             %>
             <div class="blog-carousel__item transform-scale-bigImg">
-                <a href="#" class="blog-carousel__link"
+                <a href="<%=request.getContextPath()%>/album?pos=<%=is.getPosition()%>" class="blog-carousel__link"
                 ><img
-                        src="./asset/img/home/kien-thuc-ve-dtht-1.jpg"
+                        src="<%=is.getImg()%>"
                         alt=""
                         class="block-carousel__img"
                 /><%=is.getContent()%>

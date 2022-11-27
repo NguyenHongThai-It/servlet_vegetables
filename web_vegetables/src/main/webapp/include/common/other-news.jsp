@@ -37,7 +37,7 @@
         %>
         <div class="col-lg-4 col-md-6 col-12 auto-width">
             <jsp:include page="card-new.jsp">
-                <jsp:param name="name" value="<%=n.getId()%>"/>
+                <jsp:param name="id" value="<%=n.getId()%>"/>
 
                 <jsp:param name="name" value="<%=n.getName()%>"/>
                 <jsp:param name="description" value="<%=n.getDescription()%>"/>

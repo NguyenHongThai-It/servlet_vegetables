@@ -165,11 +165,12 @@
 
                     <div
                             class="shop-system__img bg-white p-3 mt-4 transform-scale-bigImg overflow-hidden mx-auto"
+                            style="max-height: 40rem; max-width: 120rem; overflow: hidden;"
                     >
-                        <img
-                                src="https://via.placeholder.com/1200x400"
-                                width="90%"
-                                alt=""
+                        <img class="img-change"
+                             src="https://via.placeholder.com/1200x400"
+                             width="90%"
+                             alt=""
                         />
                     </div>
                 </div>
@@ -196,5 +197,26 @@
 ></script>
 
 <script src="./asset/js/common.js"></script>
+<script>
+    const all = document.querySelectorAll(".shop-system--click");
+    const imgScroll = document.querySelector(".img-change");
+
+    if (all) {
+        all.forEach((item) => {
+            item.addEventListener("click", () => {
+                const itemRemoveActive = document.querySelector(
+                    ".shop-system--click.active"
+                );
+                if (itemRemoveActive) {
+                    itemRemoveActive.classList.remove("active");
+                }
+                item.classList.add("active");
+                const img = item.getAttribute("data-img");
+                console.log(img);
+                imgScroll.setAttribute("src", img);
+            });
+        });
+    }
+</script>
 </html>
 

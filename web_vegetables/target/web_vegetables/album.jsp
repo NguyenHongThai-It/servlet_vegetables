@@ -1,4 +1,6 @@
-<%--
+<%@ page import="Entities.ImgStore" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 11/18/2022
@@ -6,6 +8,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<ImgStore> la = request.getAttribute("listImageAlbumByPos") != null ? (List<ImgStore>) request.getAttribute("listImageAlbumByPos") : new ArrayList<ImgStore>();
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +76,7 @@
             <section id="carousel" class="carousel">
                 <div class="content bg-white p-4 m-auto mt-5" style="width: 65%">
                     <h1 class="fw-bold text-center">
-                        Cửa hàng Hồng Sâm Hàn Quốc K-Gin 21 Tây Sơn, HN
+                        <%=la.get(0).getContent()%>
                     </h1>
 
                     <div class="carousel-for">
@@ -120,69 +126,20 @@
                     </div>
 
                     <div class="carousel-nav">
+                        <%
+                            for (ImgStore is : la) {
+
+
+                        %>
                         <div class="carousel-nav__item">
                             <img
-                                    src="./asset/img/album/121-pho-hue.jpg"
+                                    src="<%=is.getImg()%>"
                                     alt=""
                                     class="fix-size"
                             />
                         </div>
 
-                        <div class="carousel-nav__item">
-                            <img
-                                    src="./asset/img/album/cua-hang-sam.jpg"
-                                    alt=""
-                                    class="fix-size"
-                            />
-                        </div>
-
-                        <div class="carousel-nav__item">
-                            <img
-                                    src="./asset/img/album/cuahanghongsamtaisaigon.jpg"
-                                    alt=""
-                                    class="fix-size"
-                            />
-                        </div>
-
-                        <div class="carousel-nav__item">
-                            <img
-                                    src="./asset/img/album/cuahangsamhanquoc.jpg"
-                                    alt=""
-                                    class="fix-size"
-                            />
-                        </div>
-
-                        <div class="carousel-nav__item">
-                            <img
-                                    src="./asset/img/album/cuahangsamhanquococaugiau.jpg"
-                                    class="fix-size"
-                                    alt=""
-                            />
-                        </div>
-
-                        <div class="carousel-nav__item">
-                            <img
-                                    src="./asset/img/album/cuahangsamhanquoctaihanoi-scaled.jpg"
-                                    class="fix-size"
-                                    alt=""
-                            />
-                        </div>
-
-                        <div class="carousel-nav__item">
-                            <img
-                                    src="./asset/img/album/cuahangsamohanoi.jpeg"
-                                    alt=""
-                                    class="fix-size"
-                            />
-                        </div>
-
-                        <div class="carousel-nav__item">
-                            <img
-                                    src="./asset/img/album/hong-sam-han-quoc-k-gin.jpg"
-                                    class="fix-size"
-                                    alt=""
-                            />
-                        </div>
+                        <%} %>
                     </div>
                 </div>
             </section>
@@ -199,24 +156,16 @@
                         <span class="fs-2 label-Advertise fw-bold">Các album khác</span>
                     </div>
                 </div>
-                <div class="mb-5 row text-center">
-                    <div class="col-6 col-md-4 col-lg-3 mt-4">
-                        <jsp:include page="include/about/album.jsp"></jsp:include>
-
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mt-4">
-                        <jsp:include page="include/about/album.jsp"></jsp:include>
-
-                    </div>
+                <jsp:include page="include/about/album.jsp"></jsp:include>
 
 
-                </div>
-            </section>
         </div>
-
+        </section>
     </div>
-    <!-- Footer -->
-    <jsp:include page="include/common/footer.jsp"></jsp:include>
+
+</div>
+<!-- Footer -->
+<jsp:include page="include/common/footer.jsp"></jsp:include>
 </div>
 </body>
 

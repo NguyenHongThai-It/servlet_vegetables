@@ -20,7 +20,6 @@ public class NavModel {
         List<Nav> listNavs = new ArrayList<>();
 
 
-
         try {
             jdbcObj = new ConnectionPool();
             DataSource dataSource = jdbcObj.setUpPool();

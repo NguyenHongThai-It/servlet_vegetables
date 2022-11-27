@@ -1,3 +1,7 @@
+<%@ page import="Entities.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: PC
@@ -6,6 +10,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +53,10 @@
 </head>
 
 <body>
+<%
+    List<Product> listPro = request.getAttribute("listProduct") != null ? (List<Product>) request.getAttribute("listProduct") : new ArrayList<Product>();
+
+%>
 <div class="app">
     <!-- Header -->
     <jsp:include page="include/common/header.jsp"></jsp:include>
@@ -81,17 +90,22 @@
 
                         <!-- Sản phẩm bán chạy -->
                         <div class="row row-cols-number-auto">
-                            <div class="col-lg-4 col-md-6 col-12 m-auto auto-width">
-                                <jsp:include page="include/common/card.jsp"></jsp:include>
-                            </div>
+                            <%
+                                for (Product p : listPro) {
+                            %>
+                            <div class="col-lg-4 col-md-6 col-12  auto-width">
+                                <jsp:include page="include/common/card.jsp">
+                                    <jsp:param name="id" value="<%=p.getId()%>"/>
+                                    <jsp:param name="name" value="<%=p.getName()%>"/>
+                                    <jsp:param name="thumbnail" value="<%=p.getThumbnail()%>"/>
+                                    <jsp:param name="disc_extra" value="<%=p.getDiscExtra()%>"/>
+                                    <jsp:param name="price" value="<%=p.getPrice()%>"/>
+                                    <jsp:param name="price_disc" value="<%=p.getPriceDisc()%>"/>
+                                </jsp:include>
 
-                            <div class="col-lg-4 col-md-6 col-12 m-auto auto-width">
-                                <jsp:include page="include/common/card.jsp"></jsp:include>
                             </div>
+                            <%}%>
 
-                            <div class="col-lg-4 col-md-6 col-12 m-auto auto-width">
-                                <jsp:include page="include/common/card.jsp"></jsp:include>
-                            </div>
                         </div>
                     </div>
                     <!-- Pagination -->

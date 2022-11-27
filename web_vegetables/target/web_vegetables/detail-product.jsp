@@ -88,7 +88,7 @@
                 <div class="d-lg-flex align-items-start">
                     <div class="modal-header col-lg-5 col-12">
                         <img
-                                src="${product.getImg()}"
+                                src="${product.getThumbnail()}"
                                 alt=""
                                 style="
                     max-width: 50rem;

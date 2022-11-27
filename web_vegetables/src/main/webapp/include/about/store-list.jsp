@@ -36,8 +36,8 @@
 
 
         %>
-        <p>
-            <span class="shop-system--branch pointer">
+        <p class="shop-system--click " data-img="<%=sp.getImgMap()%>">
+        <span class="shop-system--branch pointer">
                 <i class="fa-solid fa-store"></i>
                 <%=sp.getName()%>  <%=sp.getLocation()%>
             </span>

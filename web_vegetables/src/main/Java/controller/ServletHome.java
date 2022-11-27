@@ -17,9 +17,9 @@ import java.util.List;
 @WebServlet("/home")
 public class ServletHome extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    Utils util = new Utils();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utils util = new Utils();
 
         util.passListNav(request);
 
@@ -47,7 +47,7 @@ public class ServletHome extends HttpServlet {
 
         util.passSystemProductList(request, "listSP");
 
-        getListBlogCarousel(request, 1);
+        getListBlogCarousel(request, 10);
 
         util.passContactInfor(request);
 

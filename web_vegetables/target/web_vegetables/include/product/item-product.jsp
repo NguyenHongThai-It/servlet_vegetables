@@ -6,6 +6,21 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="vi_VN"/>
+<%
+    String id = request.getParameter("id") != null ? request.getParameter("id").toString() : "";
+    String name = request.getParameter("name") != null ? request.getParameter("name").toString() : "";
+    String thumbnail = request.getParameter("thumbnail") != null ? request.getParameter("thumbnail") : "";
+    String disc_extra = request.getParameter("disc_extra") != null ? request.getParameter("disc_extra") : "";
+    String price = request.getParameter("price") != null ? request.getParameter("price") : "";
+    String price_disc = request.getParameter("price_disc") != null ? request.getParameter("price_disc") : "";
+    String desc = request.getParameter("desc") != null ? request.getParameter("desc") : "";
+    String brand = request.getParameter("desc") != null ? request.getParameter("brand") : "";
+    String spec = request.getParameter("desc") != null ? request.getParameter("spec") : "";
+    String origin = request.getParameter("desc") != null ? request.getParameter("origin") : "";
+
+%>
 <div
         class="horizontal-item flex-column flex-md-row pt-4 ps-md-4 pb-md-4 pb-0 transform-scale"
 >
@@ -23,16 +38,12 @@
             <h2
                     class="horizontal-item__title fw-bold pt-3 pt-md-0 pb-lg-2"
             >
-                Cao Hồng Sâm Linh Chi Pocheon Hàn Quốc
+                <%=name%>
             </h2>
             <h5
                     class="d-none d-lg-block horizontal-item__desc lh-base"
             >
-                Cao hồng sâm linh chi Hàn Quốc, cao linh chi Pocheon là
-                sản phẩm được chiết xuất từ hồng sâm 6 năm tuổi kết hợp
-                với linh chi Hàn Quốc, sự kết hợp giữa 2 vị thuốc quý,
-                có công dụng bồi bổ sức khỏe và phòng ngừa nhiều căn
-                bệnh nguy hiểm, chống oxi hóa, kéo dài tuổi thọ.
+                <%=desc%>
             </h5>
         </div>
 
@@ -40,13 +51,13 @@
                 class="d-flex flex-column flex-lg-row pb-3 ps-3 ps-md-0 pt-3 border-bottom"
         >
             <div class="flex-grow-1 text-lg-center">
-                Quy Cách : 2 lọ x 240gr
+                Quy Cách : <%=spec%>
             </div>
             <div class="flex-grow-1 text-lg-center">
-                Xuất Xứ : Hàn Quốc
+                Xuất Xứ : <%=origin%>
             </div>
             <div class="flex-grow-1 text-lg-center">
-                Thương Hiệu : Bio Science
+                Thương Hiệu : <%=brand%>
             </div>
         </div>
 
@@ -57,15 +68,19 @@
                     class="me-5 ms-5 ms-lg-0 ps-md-4"
                     style="font-size: 3.8rem"
             >
-                -14%
+                -<%=disc_extra%>%
             </p>
             <div class="text-start">
                         <span
                                 class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
                         >
-                          2.500.000 đ</span
-                        >
-                <p class="media-fontsize-lg lh-1">2.300.000 đ</p>
+                             <fmt:formatNumber value="<%=price%>" type="currency"/>
+                          </span
+                          >
+                <p class="media-fontsize-lg lh-1">
+                    <fmt:formatNumber value="<%=price_disc%>" type="currency"/>
+
+                </p>
             </div>
         </div>
 
@@ -97,7 +112,7 @@
                         style="padding: 0.2rem 1rem"
                 >
                     <a
-                            href="#"
+                            href="<%= request.getContextPath()%>/detail-product?id=<%=id%>"
                             class="media-fontsize-sm btn btn-light_1"
                             role="button"
                             data-bs-toggle="button"

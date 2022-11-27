@@ -40,7 +40,7 @@
 
                     %>
                     <a
-                            href="<%=request.getContextPath()%> <%=cat.getSlug()%>"
+                            href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
                             class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                     >
                         <li><%=cat.getName()%>
@@ -49,7 +49,7 @@
                     <% }%>
 
 
-                    <a href="./product.html" class="category-btn">
+                    <a href="<%=request.getContextPath()%>/product" class="category-btn">
                         <div class="category-btn--border">
                             <div class="category-btn--textField">Xem Tất Cả</div>
                         </div>

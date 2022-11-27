@@ -12,9 +12,10 @@ import java.util.List;
 
 @WebServlet("/policy")
 public class ServletPolicy extends HttpServlet {
+    Utils util = new Utils();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utils util = new Utils();
         util.passListNav(request);
         util.passListMenu(request, "listMenu");
         util.passListCatById(request, "listRedGinseng", "1");
@@ -24,7 +25,7 @@ public class ServletPolicy extends HttpServlet {
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
 
-        util.passListProductWithKey(request, 4,"bestsell");
+        util.passListProductWithKey(request, 4, "bestsell");
         util.passListNew(request, 4);
         util.passContactInfor(request);
 

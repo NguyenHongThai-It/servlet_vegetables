@@ -23,9 +23,9 @@ h5.pb-3.ps-3 {
   font-size: 16px;
 }
 
-.container {
-  overflow: hidden;
-}
+/*.container {*/
+/*  overflow: hidden;*/
+/*}*/
 .golden-text {
   color: #f0ad4e;
 }

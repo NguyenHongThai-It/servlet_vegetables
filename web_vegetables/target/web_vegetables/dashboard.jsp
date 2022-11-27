@@ -97,22 +97,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="bi bi-bar-chart"></i> Analitycs
-                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <i class="bi bi-chat"></i> Messages
-                            <span
-                                    class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto"
-                            >6</span
-                            >
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="bi bi-bookmarks"></i> Collections
+                            <i class="bi bi-bookmarks"></i> Products
                         </a>
                     </li>
                     <li class="nav-item">

@@ -1,4 +1,6 @@
-<%--
+<%@ page import="Entities.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 11/18/2022
@@ -6,6 +8,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+    List<Product> listPro = request.getAttribute("listProduct") != null ? (List<Product>) request.getAttribute("listProduct") : new ArrayList<Product>();
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,10 +107,24 @@
                     >
                             </div>
                         </div>
+                        <%
+                            for (Product p : listPro) {
 
-                        <jsp:include page="include/product/item-product.jsp"></jsp:include>
+                        %>
+                        <jsp:include page="include/product/item-product.jsp">
+                            <jsp:param name="id" value="<%=p.getId()%>"/>
+                            <jsp:param name="name" value="<%=p.getName()%>"/>
+                            <jsp:param name="thumbnail" value="<%=p.getThumbnail()%>"/>
+                            <jsp:param name="disc_extra" value="<%=p.getDiscExtra()%>"/>
+                            <jsp:param name="price" value="<%=p.getPrice()%>"/>
+                            <jsp:param name="desc" value="<%=p.getDesc()%>"/>
+                            <jsp:param name="origin" value="<%=p.getOrigin()%>"/>
+                            <jsp:param name="spec" value="<%=p.getSpecification()%>"/>
+                            <jsp:param name="brand" value="<%=p.getBrand()%>"/>
 
-                        <jsp:include page="include/product/item-product.jsp"></jsp:include>
+                            <jsp:param name="price_disc" value="<%=p.getPriceDisc()%>"/>
+                        </jsp:include>
+                        <%}%>
 
 
                         <!-- Pagination -->
@@ -152,11 +175,12 @@
                             </ul>
                         </nav>
 
-                        <section id="slideBar1" class="bg-white p-5 rounded-3">
+                        <section id="slideBar1" class="bg-white p-3 rounded-3">
                             <div
                                     class="bg-white text-start pe-3 lh-lg overflow-auto scroll-custom"
                                     style="height: 130rem"
                             >
+                                <%--here--%>
                                 <div class="introduce-0">
                                     <p class="fst-italic">
                         <span class="fw-bold text-red_medium"
@@ -353,36 +377,8 @@
                 </div>
             </section>
 
-            <section id="best-seller" class="best-seller">
-                <div
-                        class="item-label--goldenBackground item-label--clipPath p-1 mt-4 m-auto"
-                        style="width: 27rem"
-                >
-                    <div
-                            class="item-label--redTextFeild item-label--clipPath label-Advertise"
-                            style="padding: 0.7rem"
-                    >
-                <span class="fs-2 label-Advertise fw-bold"
-                >Sản Phẩm Bán Chạy</span
-                >
-                    </div>
-                </div>
+            <c:import url="include/common/best-sell.jsp"></c:import>
 
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-12 m-auto auto-width">
-                        <jsp:include page="include/common/card.jsp"></jsp:include>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12 m-auto auto-width">
-                        <jsp:include page="include/common/card.jsp"></jsp:include>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12 m-auto auto-width">
-                        <jsp:include page="include/common/card.jsp"></jsp:include>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12 m-auto auto-width">
-                        <jsp:include page="include/common/card.jsp"></jsp:include>
-                    </div>
-                </div>
-            </section>
 
             <section id="desc" class="desc mb-5">
                 <div class="row">
@@ -570,4 +566,5 @@
 
 <!-- CUSTOM -->
 <script src="./asset/js/common.js"></script>
+
 </html>

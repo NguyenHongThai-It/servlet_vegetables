@@ -16,7 +16,9 @@
 <section id="health-gift" class="health-gift">
     <div class="row mt-5 pt-3">
         <div class="col col-lg-3 col-md-0 mt-4 mt-5 col-12">
-            <div class="category bg-leather_1 border">
+            <form action="<%=request.getContextPath()%>/product" method="get"
+
+                  class="category bg-leather_1 border" style="">
                 <div class="list-group text-start">
                     <div
                             class="border text-bg-gray_1 border-red_medium border-4 d-flex align-items-center"
@@ -38,12 +40,13 @@
                     >
                         <input
                                 type="radio"
-                                name="Dosage-forms"
+                                name="money"
                                 id="less-1-MIL"
                                 class="ms-4 me-3"
+                                value="ASC"
                         />
                         <label for="less-1-MIL" class="w-100"
-                        >&#60; 1 Triệu</label
+                        >&#60; Tăng dần</label
                         >
                     </div>
                     <div
@@ -51,40 +54,17 @@
                     >
                         <input
                                 type="radio"
-                                name="Dosage-forms"
+                                name="money"
                                 id="1-MIL-to-2.5-MIL"
                                 class="ms-4 me-3"
+                                value="DESC"
+
                         />
                         <label for="1-MIL-to-2.5-MIL" class="w-100"
-                        >1 Triệu &#8722; 2,5 Triệu</label
+                        >1 Triệu &#8722; giảm dần</label
                         >
                     </div>
-                    <div
-                            class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
-                    >
-                        <input
-                                type="radio"
-                                name="Dosage-forms"
-                                id="2.5-MIL-to-5-MIL"
-                                class="ms-4 me-3"
-                        />
-                        <label for="2.5-MIL-to-5-MIL" class="w-100"
-                        >2,5 Triệu &#8722; 5 Triệu</label
-                        >
-                    </div>
-                    <div
-                            class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
-                    >
-                        <input
-                                type="radio"
-                                name="Dosage-forms"
-                                id="over-5-MIL"
-                                class="ms-4 me-3"
-                        />
-                        <label for="over-5-MIL" class="w-100"
-                        >&#62; 5 Triệu</label
-                        >
-                    </div>
+
 
                     <a
                             class="category-item bg-leather_1 text-dark list-group-item list-group-item-action"
@@ -95,10 +75,11 @@
                             class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
                     >
                         <input
-                                type="checkbox"
-                                name="Dosage-forms"
+                                type="radio"
+                                name="type"
                                 id="dry-form"
                                 class="ms-4 me-3"
+                                value=1
                         />
                         <label for="dry-form" class="w-100">Dạng Khô</label>
                     </div>
@@ -106,10 +87,11 @@
                             class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
                     >
                         <input
-                                type="checkbox"
-                                name="Dosage-forms"
+                                type="radio"
+                                name="type"
                                 id="extracts-form"
                                 class="ms-4 me-3"
+                                value=2
                         />
                         <label for="extracts-form" class="w-100"
                         >Dạng Cao</label
@@ -119,43 +101,59 @@
                             class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
                     >
                         <input
-                                type="checkbox"
-                                name="Dosage-forms"
+                                type="radio"
+                                name="type"
                                 id="liquid-form"
                                 class="ms-4 me-3"
+                                value=3
                         />
-                        <label for="liquid-form" class="w-100">Dạng Nước</label>
+                        <label for="liquid-form" class="w-100"
+                        >Dạng Nước</label
+                        >
                     </div>
                     <div
                             class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
                     >
                         <input
-                                type="checkbox"
-                                name="Dosage-forms"
+                                type="radio"
+                                name="type"
                                 id="tablet-form"
                                 class="ms-4 me-3"
+                                value=4
+
                         />
-                        <label for="tablet-form" class="w-100">Dạng Viên</label>
+                        <label for="tablet-form" class="w-100"
+                        >Dạng Viên</label
+                        >
                     </div>
                     <div
                             class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
                     >
                         <input
-                                type="checkbox"
-                                name="Dosage-forms"
+                                type="radio"
+                                name="type"
                                 id="powder-form"
                                 class="ms-4 me-3"
+                                value=5
                         />
-                        <label for="powder-form" class="w-100">Dạng Bột</label>
+                        <label for="powder-form" class="w-100"
+                        >Dạng Bột</label
+                        >
                     </div>
+                    <button type="submit" class="category-btn border-0 bg-transparent">
+                        <div class="category-btn--border m-auto mt-3">
+                            <div class="category-btn--textField">Tìm Sản Phẩm</div>
+                        </div>
+                    </button>
                 </div>
 
-                <a href="#" class="category-btn">
-                    <div class="category-btn--border m-auto mt-3">
-                        <div class="category-btn--textField">Tìm Sản Phẩm</div>
-                    </div>
-                </a>
-            </div>
+                <input
+                        type="hidden"
+                        name="cond"
+                        value="filter"
+                        class="ms-4 me-3"
+                />
+            </form>
         </div>
 
         <div class="col col-lg-9 col-md-12 col-12">

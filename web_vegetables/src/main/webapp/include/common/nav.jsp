@@ -26,7 +26,8 @@
 
             %>
             <li class="navigate-sublist__item">
-                <a href="./product.html" class="navigate-sublist__link">
+                <a href="<%=request.getContextPath()%>/product?type=<%=lm.get(i).getTypes()%>&cond=menu&parentId=<%=lm.get(i).getId()%>"
+                   class="navigate-sublist__link">
                     <%=lm.get(i).getName()%>
                     <i class="fa-solid fa-caret-down"></i>
                 </a>
@@ -38,7 +39,8 @@
 
                     %>
                     <li class="navigate-sublist__item">
-                        <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
+                        <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"
+                           class="navigate-sublist__link">
                             <%=ca.getName()%>
                         </a>
                     </li>
@@ -53,7 +55,8 @@
 
                     %>
                     <li class="navigate-sublist__item">
-                        <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
+                        <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"
+                           class="navigate-sublist__link">
                             <%=ca.getName()%>
                         </a>
                     </li>
@@ -68,7 +71,8 @@
 
                     %>
                     <li class="navigate-sublist__item">
-                        <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
+                        <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"
+                           class="navigate-sublist__link">
                             <%=ca.getName()%>
                         </a>
                     </li>
@@ -83,7 +87,8 @@
 
                     %>
                     <li class="navigate-sublist__item">
-                        <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
+                        <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"
+                           class="navigate-sublist__link">
                             <%=ca.getName()%>
                         </a>
                     </li>
@@ -92,21 +97,22 @@
                         }
                     %>
 
-                    <%
-                        if (lm.get(i).getId().equalsIgnoreCase(listCat5.get(0).getParentId())) {
-                            for (Category ca : listCat5) {
+<%--                    <%--%>
+<%--                        if (lm.get(i).getId().equalsIgnoreCase(listCat5.get(0).getParentId())) {--%>
+<%--                            for (Category ca : listCat5) {--%>
 
 
-                    %>
-                    <li class="navigate-sublist__item">
-                        <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
-                            <%=ca.getName()%>
-                        </a>
-                    </li>
-                    <%
-                            }
-                        }
-                    %>
+<%--                    %>--%>
+<%--                    <li class="navigate-sublist__item">--%>
+<%--                        <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"--%>
+<%--                           class="navigate-sublist__link">--%>
+<%--                            <%=ca.getName()%>--%>
+<%--                        </a>--%>
+<%--                    </li>--%>
+<%--                    <%--%>
+<%--                            }--%>
+<%--                        }--%>
+<%--                    %>--%>
 
                     <%
                         if (lm.get(i).getId().equalsIgnoreCase(listCat6.get(0).getParentId())) {
@@ -115,7 +121,8 @@
 
                     %>
                     <li class="navigate-sublist__item">
-                        <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
+                        <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"
+                           class="navigate-sublist__link">
                             <%=ca.getName()%>
                         </a>
                     </li>
@@ -138,7 +145,8 @@
 
     %>
     <li class="navigate-list__item">
-        <a href="./product.html" class="navigate-list__link">
+        <a href="<%=request.getContextPath()%>/product?type=<%=lm.get(i).getTypes()%>&cond=menu&parentId=<%=lm.get(i).getId()%>"
+           class="navigate-list__link">
             <%=lm.get(i).getName()%>
             <i class="fa-solid fa-caret-down"></i>
         </a>
@@ -150,7 +158,8 @@
 
             %>
             <li class="navigate-sublist__item">
-                <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
+                <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"
+                   class="navigate-sublist__link">
                     <%=ca.getName()%>
                 </a>
             </li>
@@ -165,7 +174,8 @@
 
             %>
             <li class="navigate-sublist__item">
-                <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
+                <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"
+                   class="navigate-sublist__link">
                     <%=ca.getName()%>
                 </a>
             </li>
@@ -180,7 +190,8 @@
 
             %>
             <li class="navigate-sublist__item">
-                <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
+                <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"
+                   class="navigate-sublist__link">
                     <%=ca.getName()%>
                 </a>
             </li>
@@ -195,7 +206,8 @@
 
             %>
             <li class="navigate-sublist__item">
-                <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
+                <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"
+                   class="navigate-sublist__link">
                     <%=ca.getName()%>
                 </a>
             </li>
@@ -204,21 +216,22 @@
                 }
             %>
 
-            <%
-                if (lm.get(i).getId().equalsIgnoreCase(listCat5.get(0).getParentId())) {
-                    for (Category ca : listCat5) {
+<%--            <%--%>
+<%--                if (lm.get(i).getId().equalsIgnoreCase(listCat5.get(0).getParentId())) {--%>
+<%--                    for (Category ca : listCat5) {--%>
 
 
-            %>
-            <li class="navigate-sublist__item">
-                <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
-                    <%=ca.getName()%>
-                </a>
-            </li>
-            <%
-                    }
-                }
-            %>
+<%--            %>--%>
+<%--            <li class="navigate-sublist__item">--%>
+<%--                <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"--%>
+<%--                   class="navigate-sublist__link">--%>
+<%--                    <%=ca.getName()%>--%>
+<%--                </a>--%>
+<%--            </li>--%>
+<%--            <%--%>
+<%--                    }--%>
+<%--                }--%>
+<%--            %>--%>
 
             <%
                 if (lm.get(i).getId().equalsIgnoreCase(listCat6.get(0).getParentId())) {
@@ -227,7 +240,8 @@
 
             %>
             <li class="navigate-sublist__item">
-                <a href="<%=request.getContextPath()%><%=ca.getSlug()%>" class="navigate-sublist__link">
+                <a href="<%=request.getContextPath()%>/product?type=<%=ca.getTypes()%>&cond=cat"
+                   class="navigate-sublist__link">
                     <%=ca.getName()%>
                 </a>
             </li>
@@ -254,18 +268,17 @@
     >
         <%
             for (int i = 0; i < lm.size(); i++) {
-
-
         %>
         <li
-                class="navigate-list-mobile__item"
+                class="navigate-list-mobile__item "
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseExample<%=lm.get(i).getId()%>"
                 aria-expanded="false"
                 aria-controls="collapseExample<%=lm.get(i).getId()%>"
         >
             <img src="./asset/img/home/menu-1.png" alt="" class="w-auto"/>
-            <a href="<%=request.getContextPath()%><%=lm.get(i).getSlug()%>" class="navigate-list-mobile__link"
+            <a href="<%=request.getContextPath()%>/product?type=<%=lm.get(i).getTypes()%>&cond=menu&parentId=<%=lm.get(i).getId()%>"
+               class="navigate-list-mobile__link"
             ><%=lm.get(i).getName()%>
             </a
             >
@@ -286,7 +299,8 @@
             <li
                     class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
             >
-                <a href="<%=request.getContextPath()%><%=cat.getSlug()%>" class="navigate-sublist-mobile__link">
+                <a href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
+                   class="navigate-sublist-mobile__link">
                     <%=cat.getName()%>
                 </a>
             </li>
@@ -302,7 +316,8 @@
             <li
                     class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
             >
-                <a href="<%=request.getContextPath()%><%=cat.getSlug()%>" class="navigate-sublist-mobile__link">
+                <a href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
+                   class="navigate-sublist-mobile__link">
                     <%=cat.getName()%>
                 </a>
             </li>
@@ -318,7 +333,8 @@
             <li
                     class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
             >
-                <a href="<%=request.getContextPath()%><%=cat.getSlug()%>" class="navigate-sublist-mobile__link">
+                <a href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
+                   class="navigate-sublist-mobile__link">
                     <%=cat.getName()%>
                 </a>
             </li>
@@ -334,28 +350,30 @@
             <li
                     class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
             >
-                <a href="<%=request.getContextPath()%><%=cat.getSlug()%>" class="navigate-sublist-mobile__link">
+                <a href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
+                   class="navigate-sublist-mobile__link">
                     <%=cat.getName()%>
                 </a>
             </li>
             <% }%>
             <% }%>
 
-            <%
-                if (lm.get(i).getId().equalsIgnoreCase(listCat5.get(0).getParentId())) {
-            %>
-            <%
-                for (Category cat : listCat5) {
-            %>
-            <li
-                    class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
-            >
-                <a href="<%=request.getContextPath()%><%=cat.getSlug()%>" class="navigate-sublist-mobile__link">
-                    <%=cat.getName()%>
-                </a>
-            </li>
-            <% }%>
-            <% }%>
+<%--            <%--%>
+<%--                if (lm.get(i).getId().equalsIgnoreCase(listCat5.get(0).getParentId())) {--%>
+<%--            %>--%>
+<%--            <%--%>
+<%--                for (Category cat : listCat5) {--%>
+<%--            %>--%>
+<%--            <li--%>
+<%--                    class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"--%>
+<%--            >--%>
+<%--                <a href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"--%>
+<%--                   class="navigate-sublist-mobile__link">--%>
+<%--                    <%=cat.getName()%>--%>
+<%--                </a>--%>
+<%--            </li>--%>
+<%--            <% }%>--%>
+<%--            <% }%>--%>
 
             <%
                 if (lm.get(i).getId().equalsIgnoreCase(listCat6.get(0).getParentId())) {
@@ -366,7 +384,8 @@
             <li
                     class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
             >
-                <a href="<%=request.getContextPath()%><%=cat.getSlug()%>" class="navigate-sublist-mobile__link">
+                <a href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
+                   class="navigate-sublist-mobile__link">
                     <%=cat.getName()%>
                 </a>
             </li>

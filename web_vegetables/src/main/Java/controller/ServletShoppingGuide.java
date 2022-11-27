@@ -12,9 +12,10 @@ import java.util.List;
 
 @WebServlet("/shopping-guide")
 public class ServletShoppingGuide extends HttpServlet {
+    Utils util = new Utils();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utils util = new Utils();
         util.passListNav(request);
         util.passListMenu(request, "listMenu");
         util.passListCatById(request, "listRedGinseng", "1");

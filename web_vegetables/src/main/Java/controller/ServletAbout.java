@@ -17,11 +17,11 @@ import java.util.List;
 
 @WebServlet("/about")
 public class ServletAbout extends HttpServlet {
+    Utils util = new Utils();
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utils util = new Utils();
         util.passListNav(request);
         util.passListMenu(request, "listMenu");
         util.passListCatById(request, "listRedGinseng", "1");
@@ -31,7 +31,7 @@ public class ServletAbout extends HttpServlet {
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
 
-        getListImageAlbum(request, 3);
+        getListImageAlbum(request, 10);
         util.passSystemProductList(request, "listSP");
 
         util.passContactInfor(request);

@@ -24,7 +24,7 @@
             class="item__img--hover d-flex align-items-center justify-content-center"
     >
         <img
-                src="./asset/img/home/kgin-nam-linh-chi-nui-dai-dien-.jpg"
+                src="<%=thumbnail%>"
                 class="img-ani card-img-top"
                 alt="..."
         />
@@ -76,22 +76,23 @@
             </div>
             <div class="col-6 col-md-6 col-lg-6">
                 <div class="item-btn--goldenBackground">
-                    <div
-                            class="item-btn--textFeild"
+                    <a
+                            href="<%= request.getContextPath()%>/detail-product?id=<%=id%>"
+                            class="item-btn--textFeild w-100"
                             style="padding: 0.2rem 1rem"
                             type="button"
                             class="btn btn-primary"
                     >
-                        <a
-                                href="<%= request.getContextPath()%>/detail-product?id=<%=id%>"
-                                class="media-fontsize-sm btn btn-light_1"
+                        <span
+
+                                class="media-fontsize-sm btn btn-light_1 w-100"
                         >
                             <b
                             >Xem chi tiết<i
                                     class="fa-solid fa-angles-right ms-2"
                             ></i></b
-                            ></a>
-                    </div>
+                            ></span>
+                    </a>
                 </div>
             </div>
         </div>
