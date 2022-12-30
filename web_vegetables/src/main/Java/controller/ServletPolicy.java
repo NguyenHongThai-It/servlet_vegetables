@@ -25,7 +25,7 @@ public class ServletPolicy extends HttpServlet {
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
 
-        util.passListProductWithKey(request, 4, "bestsell");
+        util.passListProductWithKey(request, 3, "outstanding");
         util.passListNew(request, 4);
         util.passContactInfor(request);
 

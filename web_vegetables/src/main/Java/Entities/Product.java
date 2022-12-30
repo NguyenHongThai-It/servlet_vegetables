@@ -1,6 +1,8 @@
 package Entities;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private String id;
     private String name;
     private String slug;
@@ -23,8 +25,9 @@ public class Product {
     private int forOld;
     private int form;
     private String thumbnail;
+    private int status;
 
-    public Product(String id, String name, String slug, String desc, int rate, int amountSold, int price, String specification, String origin, String brand, int priceDisc, int amount, String codeDisc, int discExtra, String contentDetailProduct, int img, int types, int outstanding, int bestSell, int forOld, int form, String thumbnail) {
+    public Product(String id, String name, String slug, String desc, int rate, int amountSold, int price, String specification, String origin, String brand, int priceDisc, int amount, String codeDisc, int discExtra, String contentDetailProduct, int img, int types, int outstanding, int bestSell, int forOld, int form, String thumbnail, int status) {
         this.id = id;
         this.name = name;
         this.slug = slug;
@@ -47,9 +50,8 @@ public class Product {
         this.forOld = forOld;
         this.form = form;
         this.thumbnail = thumbnail;
+        this.status = status;
     }
-
-
 
     public Product() {
     }
@@ -79,8 +81,18 @@ public class Product {
                 ", forOld=" + forOld +
                 ", form=" + form +
                 ", thumbnail='" + thumbnail + '\'' +
+                ", status=" + status +
                 '}';
     }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public String getThumbnail() {
         return thumbnail;
     }

@@ -26,7 +26,7 @@ public class ServletHome extends HttpServlet {
         util.passListMenu(request, "listMenu");
 
         getListProductWithKey(request, 4, "bestsell", "listProduct");
-        getListProductWithKey(request, 4, "forOld", "listProductForOld");
+        getListProductWithKey(request, 3, "forOld", "listProductForOld");
 
 
         getListService(request);
@@ -46,7 +46,6 @@ public class ServletHome extends HttpServlet {
         getHTMLNew(request);
 
         util.passSystemProductList(request, "listSP");
-
         getListBlogCarousel(request, 10);
 
         util.passContactInfor(request);
@@ -79,10 +78,10 @@ public class ServletHome extends HttpServlet {
         request.setAttribute("listBlogCarousel", listBlogCarousel);
     }
 
-    private void getListProductByCat(HttpServletRequest request, int typeCat, String idMenu, String name) {
+    private void getListProductByCat(HttpServletRequest request, int catId, String idMenu, String name) {
         List<Product> listPro = new ArrayList<Product>();
 
-        listPro = new ProductModel().getListProductByCat(typeCat, idMenu);
+        listPro = new ProductModel().getListProductByCat(catId, idMenu, 0, 6);
         request.setAttribute(name, listPro);
     }
 

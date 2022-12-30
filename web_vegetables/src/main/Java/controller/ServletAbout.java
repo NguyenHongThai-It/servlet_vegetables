@@ -2,8 +2,10 @@ package controller;
 
 import Entities.ImgStore;
 import Entities.Nav;
+import Entities.Product;
 import Model.ImgStoreModel;
 import Model.NavModel;
+import Model.ProductModel;
 import utils.Utils;
 
 import javax.annotation.Resource;
@@ -35,7 +37,6 @@ public class ServletAbout extends HttpServlet {
         util.passSystemProductList(request, "listSP");
 
         util.passContactInfor(request);
-
         request.getRequestDispatcher("about.jsp").forward(request, response);
     }
 
@@ -45,4 +46,5 @@ public class ServletAbout extends HttpServlet {
         listBlogCarousel = new ImgStoreModel().getImages(pos);
         request.setAttribute("listImageAlbum", listBlogCarousel);
     }
+
 }
